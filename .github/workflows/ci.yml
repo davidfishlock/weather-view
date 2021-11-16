@@ -1,0 +1,27 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Code format check
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint:check
+
+      - name: TS compile check
+        run: npm run types:check
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Build
+        run: npm run build
