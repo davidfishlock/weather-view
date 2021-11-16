@@ -43,6 +43,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
