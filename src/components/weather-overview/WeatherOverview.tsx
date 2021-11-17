@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { City } from 'ts-open-weather-map/dist/types/models'
 import { OneCallResponse } from 'ts-open-weather-map/dist/types/requests'
 import weatherAPI from '../../utils/weatherApi'
-import CurrentWeather from './CurrentWeather'
+import CurrentWeather from './current-weather/CurrentWeather'
 
 type Props = { location?: City | { name: string; lat: number; lon: number } }
 
@@ -18,7 +18,10 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
 
     weatherAPI
       .oneCall(location.lat, location.lon)
-      .then(setWeatherData)
+      .then((data) => {
+        console.log(data)
+        setWeatherData(data)
+      })
       .catch(setError)
       .finally(() => setIsLoading(false))
   }, [location])

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+        @apply shadow-md border-gray-700 border rounded-lg p-3 m-3;
+    }
+}

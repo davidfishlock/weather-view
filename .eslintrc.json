@@ -53,7 +53,8 @@
           "**/setupTests.ts",
           "**/test/*",
           "**/*.test.{ts,tsx}",
-          "**/*.spec.{ts,tsx}"
+          "**/*.spec.{ts,tsx}",
+          "**/*.stories.{ts,tsx}"
         ]
       }
     ]
