@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -43,16 +44,18 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": [
-          "**/setupTests.ts",
+          "**/setupTests.js",
           "**/test/*",
           "**/*.test.{ts,tsx}",
-          "**/*.spec.{ts,tsx}"
+          "**/*.spec.{ts,tsx}",
+          "**/*.stories.{ts,tsx}"
         ]
       }
     ]
