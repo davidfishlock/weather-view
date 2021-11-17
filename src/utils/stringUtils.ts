@@ -1,4 +1,4 @@
-export const toTitleCase = function (inputString?: string): string {
+export function toTitleCase(inputString?: string): string {
   return inputString
     ? inputString
         .split(' ')

@@ -4,6 +4,9 @@ import withMock from 'storybook-addon-mock'
 import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
 import WeatherOverview from './WeatherOverview'
 
+const DEFAULT_REQUEST_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=0&lon=0&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+const DEFAULT_LOCATION = { name: 'current location', lat: 0, lon: 0 }
+
 export default {
   title: 'WeatherOverview',
   component: WeatherOverview,
@@ -14,16 +17,49 @@ const Template: ComponentStory<typeof WeatherOverview> = (args) => <WeatherOverv
 
 export const Default = Template.bind({})
 Default.args = {
-  location: { name: 'your location', lat: 0, lon: 0 },
+  location: DEFAULT_LOCATION,
 }
 
 Default.parameters = {
   mockData: [
     {
-      url: `https://api.openweathermap.org/data/2.5/onecall?lat=0&lon=0&appid=${process.env.REACT_APP_WEATHER_API_KEY}`,
+      url: DEFAULT_REQUEST_URL,
       method: 'GET',
       status: 200,
       response: DEFAULT_ONECALL_RESPONSE,
+    },
+  ],
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  location: DEFAULT_LOCATION,
+}
+
+Error.parameters = {
+  mockData: [
+    {
+      url: DEFAULT_REQUEST_URL,
+      method: 'GET',
+      status: 401,
+      response: {},
+    },
+  ],
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+  location: DEFAULT_LOCATION,
+}
+
+Loading.parameters = {
+  mockData: [
+    {
+      url: DEFAULT_REQUEST_URL,
+      method: 'GET',
+      status: 200,
+      response: DEFAULT_ONECALL_RESPONSE,
+      delay: 5000,
     },
   ],
 }

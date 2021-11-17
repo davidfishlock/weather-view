@@ -4,6 +4,6 @@
 
 @layer components {
     .card {
-        @apply shadow-md border-gray-700 border rounded-lg p-3 m-3;
+        @apply shadow-md border-gray-300 border rounded-2xl p-4;
     }
 }
