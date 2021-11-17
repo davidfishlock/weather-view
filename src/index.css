@@ -6,4 +6,12 @@
     .card {
         @apply shadow-md border-gray-300 border rounded-2xl p-4;
     }
+
+    .icon-md {
+        @apply h-12 w-12;
+    }
+
+    .icon-lg {
+        @apply h-32 w-32;
+    }
 }

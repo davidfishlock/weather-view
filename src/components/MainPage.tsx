@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { City } from 'ts-open-weather-map/dist/types/models'
+import { City } from 'ts-open-weather-map'
 import { strings } from '../constants/strings'
 import WeatherOverview from './weather-overview/WeatherOverview'
 
