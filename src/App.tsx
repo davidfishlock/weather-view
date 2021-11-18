@@ -1,13 +1,14 @@
 import React from 'react'
 import MainPage from './components/MainPage'
 import RootFrame from './components/RootFrame'
+import { LocationProvider } from './contexts/Location'
 
 const App: React.FC = () => (
-  <div>
+  <LocationProvider>
     <RootFrame>
       <MainPage />
     </RootFrame>
-  </div>
+  </LocationProvider>
 )
 
 export default App

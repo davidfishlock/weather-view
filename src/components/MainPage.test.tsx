@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { strings } from '../constants/strings'
+import { LocationProvider } from '../contexts/Location'
 import MainPage from './MainPage'
 
 const geoLocationSpy = jest.spyOn(navigator.geolocation, 'getCurrentPosition')
@@ -18,6 +19,10 @@ test('renders prompt when no location selected', () => {
     ),
   )
 
-  render(<MainPage />)
+  render(
+    <LocationProvider>
+      <MainPage />
+    </LocationProvider>,
+  )
   expect(screen.getByText(strings.SELECT_LOCATION)).toBeInTheDocument()
 })

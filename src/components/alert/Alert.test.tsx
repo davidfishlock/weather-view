@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { strings } from '../../constants/strings'
+import { testIds } from '../../constants/testIds'
 import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
 import Alert from './Alert'
 
@@ -11,13 +12,15 @@ function renderTarget() {
 describe('Alert', () => {
   test('displays alert description', () => {
     renderTarget()
-    expect(screen.getByText(DEFAULT_ONECALL_RESPONSE.alerts[0].description)).toBeInTheDocument()
+    expect(screen.getByTestId(testIds.ALERT_DESCRIPTION)).toHaveTextContent(
+      DEFAULT_ONECALL_RESPONSE.alerts[0].description.replace(/\n/g, ' '),
+    )
   })
 
   test('displays alert duration', () => {
     renderTarget()
     expect(
-      screen.getByText(`${strings.ALERT_VALID_FROM} 17 November, 08:00 - 17 November, 21:00`),
+      screen.getByText(`${strings.ALERT_VALID_FROM} 18 November, 10:57 - 18 November, 14:00`),
     ).toBeInTheDocument()
   })
 

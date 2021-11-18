@@ -1,5 +1,7 @@
 export const strings = {
+  LOCATION_SEARCH: 'Search location',
   CURRENT_LOCATION: 'Current Location',
+  CURRENT_LOCATION_BUTTON: 'Use current Location',
   SELECT_LOCATION: 'Please select a location.',
   CURRENT_WEATHER_FEELS_LIKE: 'Feels like:',
   CURRENT_WEATHER_HUMIDITY: 'Humidity:',

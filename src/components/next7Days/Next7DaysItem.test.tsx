@@ -17,16 +17,16 @@ describe('Next7DaysItem', () => {
 
   test('displays date for subsequent items', () => {
     renderTarget(DEFAULT_ONECALL_RESPONSE.daily[1])
-    expect(screen.getByText('Thu, 18 Nov')).toBeInTheDocument()
+    expect(screen.getByText('Fri, 19 Nov')).toBeInTheDocument()
   })
 
   test('displays weather description in title case', () => {
     renderTarget(DEFAULT_ONECALL_RESPONSE.daily[1])
-    expect(screen.getByText('Broken Clouds')).toBeInTheDocument()
+    expect(screen.getByText('Moderate Rain')).toBeInTheDocument()
   })
 
   test('displays min and max temperatures', () => {
     renderTarget(DEFAULT_ONECALL_RESPONSE.daily[0])
-    expect(screen.getByText('11°C / 7°C')).toBeInTheDocument()
+    expect(screen.getByText('8°C / -1°C')).toBeInTheDocument()
   })
 })

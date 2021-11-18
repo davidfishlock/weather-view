@@ -18,17 +18,17 @@ describe('CurrentWeather', () => {
 
   test('displays date', () => {
     renderTarget()
-    expect(screen.getByText('17 November 2021, 14:52')).toBeInTheDocument()
+    expect(screen.getByText('18 November 2021, 11:16')).toBeInTheDocument()
   })
 
   test('displays weather description', () => {
     renderTarget()
-    expect(screen.getByText('Overcast Clouds')).toBeInTheDocument()
+    expect(screen.getByText('Moderate Rain')).toBeInTheDocument()
   })
 
   test('displays temperature', () => {
     renderTarget()
-    expect(screen.getByText('11°C')).toBeInTheDocument()
+    expect(screen.getByText('0°C')).toBeInTheDocument()
   })
 
   test('displays humidity', () => {
@@ -36,7 +36,7 @@ describe('CurrentWeather', () => {
 
     const humidityElement = screen.getByText(strings.CURRENT_WEATHER_HUMIDITY).parentElement
     if (!humidityElement) throw new Error('humidityElement not found')
-    expect(within(humidityElement).getByText('77%')).toBeInTheDocument()
+    expect(within(humidityElement).getByText('89%')).toBeInTheDocument()
   })
 
   test('displays UV index', () => {
@@ -52,7 +52,7 @@ describe('CurrentWeather', () => {
 
     const windElement = screen.getByText(strings.CURRENT_WEATHER_WIND).parentElement
     if (!windElement) throw new Error('windElement not found')
-    expect(within(windElement).getByText('1.8 m/s')).toBeInTheDocument()
+    expect(within(windElement).getByText('4.1 m/s')).toBeInTheDocument()
   })
 
   test('displays atmospheric pressure', () => {
@@ -60,6 +60,6 @@ describe('CurrentWeather', () => {
 
     const pressureElement = screen.getByText(strings.CURRENT_WEATHER_PRESSURE).parentElement
     if (!pressureElement) throw new Error('pressureElement not found')
-    expect(within(pressureElement).getByText('1025hPa')).toBeInTheDocument()
+    expect(within(pressureElement).getByText('1017hPa')).toBeInTheDocument()
   })
 })
