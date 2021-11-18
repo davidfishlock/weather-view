@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { City } from 'ts-open-weather-map/dist/types/models'
-import { OneCallResponse } from 'ts-open-weather-map/dist/types/requests'
-import { api } from '../../utils/weatherApi'
-import CurrentWeather from './current-weather/CurrentWeather'
+import { City, OneCallResponse } from 'ts-open-weather-map'
+import { api } from '../utils/weatherApi'
+import Alert from './alert/Alert'
+import CurrentWeather from './currentWeather/CurrentWeather'
+import Next7Days from './next7Days/Next7Days'
 
 type Props = { location: City | { name: string; lat: number; lon: number } }
 
@@ -26,9 +27,13 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
 
   return (
     <>
+      {weatherData.alerts?.map((alert) => (
+        <Alert alert={alert} />
+      ))}
       {weatherData.current ? (
         <CurrentWeather location={location} weather={weatherData.current} />
       ) : null}
+      {weatherData.daily ? <Next7Days forecast={weatherData.daily} /> : null}
     </>
   )
 }
