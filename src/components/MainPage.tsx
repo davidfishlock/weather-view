@@ -1,24 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import { City } from 'ts-open-weather-map'
+import React, { useEffect } from 'react'
 import { strings } from '../constants/strings'
+import { useLocationContext } from '../contexts/Location'
 import WeatherOverview from './WeatherOverview'
 
 const MainPage: React.FC = () => {
-  const [location, setLocation] = useState<City | { name: string; lat: number; lon: number }>()
+  const { userLocation, setUserLocation, selectedLocation, setSelectedLocation } =
+    useLocationContext()
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) =>
-      setLocation({
+    if (userLocation) return
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      const location = {
         name: strings.CURRENT_LOCATION,
         lat: position.coords.latitude,
         lon: position.coords.longitude,
-      }),
-    )
-  }, [])
+      }
 
-  if (!location) return <p>{strings.SELECT_LOCATION}</p>
+      setUserLocation(location)
+      if (!selectedLocation) setSelectedLocation(location)
+    })
+  }, [userLocation, setUserLocation, selectedLocation, setSelectedLocation])
 
-  return <WeatherOverview location={location} />
+  if (!selectedLocation) return <p>{strings.SELECT_LOCATION}</p>
+
+  return <WeatherOverview location={selectedLocation} />
 }
 
 export default MainPage

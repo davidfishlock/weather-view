@@ -4,7 +4,7 @@ import withMock from 'storybook-addon-mock'
 import { DEFAULT_ONECALL_RESPONSE } from '../testUtils/sampleData'
 import WeatherOverview from './WeatherOverview'
 
-const DEFAULT_REQUEST_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=0&lon=0&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+const DEFAULT_REQUEST_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=anything&lon=anything&units=anything&appid=anything`
 const DEFAULT_LOCATION = { name: 'current location', lat: 0, lon: 0 }
 
 export default {

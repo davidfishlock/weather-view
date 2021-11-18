@@ -1,5 +1,7 @@
+const locales = 'en-GB'
+
 export function formatTemperature(temperature: number): string {
-  return Intl.NumberFormat('en-gb', {
+  return Intl.NumberFormat(locales, {
     style: 'unit',
     unit: 'celsius',
     maximumFractionDigits: 0,
@@ -7,7 +9,7 @@ export function formatTemperature(temperature: number): string {
 }
 
 export function formatPercentage(input: number): string {
-  return Intl.NumberFormat('en-gb', {
+  return Intl.NumberFormat(locales, {
     style: 'unit',
     unit: 'percent',
     maximumFractionDigits: 0,
@@ -15,7 +17,7 @@ export function formatPercentage(input: number): string {
 }
 
 export function formatMetresPerSecond(speed: number): string {
-  return Intl.NumberFormat('en-gb', {
+  return Intl.NumberFormat(locales, {
     style: 'unit',
     unit: 'meter-per-second',
     maximumFractionDigits: 1,
@@ -23,7 +25,7 @@ export function formatMetresPerSecond(speed: number): string {
 }
 
 export function formatPressure(input: number): string {
-  return `${Intl.NumberFormat('en-gb', {
+  return `${Intl.NumberFormat(locales, {
     maximumFractionDigits: 0,
     useGrouping: false,
   }).format(input)}hPa`
@@ -54,5 +56,5 @@ export function formatDate(
   timestamp: number,
   options: Intl.DateTimeFormatOptions = fullDateTimeFormat,
 ): string {
-  return Intl.DateTimeFormat('en-gb', options).format(new Date(timestamp * 1000))
+  return Intl.DateTimeFormat(locales, options).format(new Date(timestamp * 1000))
 }
