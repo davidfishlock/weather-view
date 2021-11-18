@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import withMock from 'storybook-addon-mock'
-import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
+import { DEFAULT_ONECALL_RESPONSE } from '../testUtils/sampleData'
 import WeatherOverview from './WeatherOverview'
 
 const DEFAULT_REQUEST_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=0&lon=0&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`

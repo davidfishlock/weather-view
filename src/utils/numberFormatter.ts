@@ -29,6 +29,30 @@ export function formatPressure(input: number): string {
   }).format(input)}hPa`
 }
 
-export function formatDate(timestamp: number): string {
-  return Intl.DateTimeFormat('en-gb').format(new Date(timestamp * 1000))
+export const shortDateFormat = {
+  weekday: 'short',
+  month: 'short',
+  day: 'numeric',
+} as const
+
+export const shortDateTimeFormat = {
+  month: 'long',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+} as const
+
+export const fullDateTimeFormat = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+} as const
+
+export function formatDate(
+  timestamp: number,
+  options: Intl.DateTimeFormatOptions = fullDateTimeFormat,
+): string {
+  return Intl.DateTimeFormat('en-gb', options).format(new Date(timestamp * 1000))
 }

@@ -1,17 +1,17 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
-import { WiWindDeg } from 'react-icons/all'
+import { WiWindDeg } from 'react-icons/wi'
 import { City, CurrentWeatherReport } from 'ts-open-weather-map'
-import { strings } from '../../../constants/strings'
-import { getWeatherIcon } from '../../../utils/iconUtils'
+import { strings } from '../../constants/strings'
+import { getWeatherIcon } from '../../utils/iconUtils'
 import {
   formatDate,
   formatMetresPerSecond,
   formatPercentage,
   formatPressure,
   formatTemperature,
-} from '../../../utils/numberFormatter'
-import { toTitleCase } from '../../../utils/stringUtils'
+} from '../../utils/numberFormatter'
+import { toTitleCase } from '../../utils/stringUtils'
 
 type Props = {
   location: City | { name: string; lat: number; lon: number }
