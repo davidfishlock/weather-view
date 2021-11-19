@@ -15,4 +15,5 @@ export const Default = Template.bind({})
 Default.args = {
   location: { name: 'some location', lat: 0, lon: 0 },
   weather: DEFAULT_ONECALL_RESPONSE.current,
+  timezoneOffset: DEFAULT_ONECALL_RESPONSE.timezoneOffset,
 }

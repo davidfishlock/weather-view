@@ -6,7 +6,13 @@ import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
 import Next7DaysItem from './Next7DaysItem'
 
 function renderTarget(forecast: DailyWeatherForecast, isToday = false) {
-  render(<Next7DaysItem forecast={forecast} isToday={isToday} />)
+  render(
+    <Next7DaysItem
+      forecast={forecast}
+      isToday={isToday}
+      timezoneOffset={DEFAULT_ONECALL_RESPONSE.timezoneOffset}
+    />,
+  )
 }
 
 describe('Next7DaysItem', () => {
