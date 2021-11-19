@@ -14,4 +14,12 @@
     .icon-lg {
         @apply h-32 w-32;
     }
+
+    .timeline-tick {
+        @apply w-0.5 h-full w-32 flex flex-col-reverse;
+    }
+
+    .timeline-tick-half {
+        @apply timeline-tick h-1/2;
+    }
 }

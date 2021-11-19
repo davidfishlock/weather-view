@@ -53,11 +53,9 @@ const Timeline: React.FC<Props> = ({ forecast, className }) => (
       {forecast.map((minute, index) => (
         <div
           className={classNames([
-            'w-0.5',
+            { 'timeline-tick': index % 15 === 0 },
+            { 'timeline-tick-half': index % 15 !== 0 },
             `bg-${getBarColor(minute.precipitation)}`,
-            `h-${index % 15 === 0 ? 'full' : '1/2'}`,
-            'flex',
-            'flex-col-reverse',
           ])}
         />
       ))}
