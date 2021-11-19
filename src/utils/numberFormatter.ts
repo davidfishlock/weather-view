@@ -52,6 +52,11 @@ export const fullDateTimeFormat = {
   minute: 'numeric',
 } as const
 
+export const timeFormat = {
+  hour: 'numeric',
+  minute: 'numeric',
+} as const
+
 export function formatDate(
   timestamp: number,
   options: Intl.DateTimeFormatOptions = fullDateTimeFormat,

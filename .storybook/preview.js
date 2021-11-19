@@ -1,4 +1,5 @@
 import { addDecorator } from '@storybook/react'
+import 'leaflet/dist/leaflet.css'
 import '../src/index.css'
 import { withLocationProvider } from './decorators'
 
