@@ -4,6 +4,7 @@ import { api } from '../utils/weatherApi'
 import Alert from './alert/Alert'
 import CurrentWeather from './currentWeather/CurrentWeather'
 import Next7Days from './next7Days/Next7Days'
+import Raincast from './rainCast/Raincast'
 
 type Props = { location: City | { name: string; lat: number; lon: number } }
 
@@ -32,6 +33,9 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
       ))}
       {weatherData.current ? (
         <CurrentWeather location={location} weather={weatherData.current} />
+      ) : null}
+      {weatherData.minutely ? (
+        <Raincast location={location} forecast={weatherData.minutely} />
       ) : null}
       {weatherData.daily ? <Next7Days forecast={weatherData.daily} /> : null}
     </>

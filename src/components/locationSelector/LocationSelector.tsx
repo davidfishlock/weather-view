@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useState } from 'react'
 import { BiCurrentLocation } from 'react-icons/bi'
@@ -57,9 +58,10 @@ const LocationSelector: React.FC = () => {
         />
 
         <ul
-          className={`absolute border p-2 border-t-0 -mt-1 pt-3 rounded-b-md w-full bg-white ${
-            suggestions.length ? '' : 'hidden'
-          }`}
+          className={classNames(
+            'absolute border p-2 border-t-0 -mt-1 pt-3 rounded-b-md w-full bg-white',
+            { hidden: suggestions.length === 0 },
+          )}
         >
           {suggestions.map((location) => (
             <li key={`${location.name}${location.lat}${location.lon}`}>
