@@ -19,4 +19,5 @@ Default.args = {
     lon: DEFAULT_ONECALL_RESPONSE.lon,
   },
   forecast: DEFAULT_ONECALL_RESPONSE.minutely,
+  timezoneOffset: DEFAULT_ONECALL_RESPONSE.timezoneOffset,
 }

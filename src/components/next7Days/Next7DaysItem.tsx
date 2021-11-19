@@ -9,9 +9,10 @@ import { toTitleCase } from '../../utils/stringUtils'
 type Props = {
   forecast: DailyWeatherForecast
   isToday: boolean
+  timezoneOffset: number
 }
 
-const Next7DaysItem: React.FC<Props> = ({ forecast, isToday }) => {
+const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) => {
   const icon = getWeatherIcon(forecast.weather[0].icon)
   return (
     <div
@@ -20,7 +21,9 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday }) => {
       className="mr-2 flex flex-col items-center"
     >
       <h3 className="font-semibold">
-        {isToday ? strings.NEXT_7_DAYS_TODAY : formatDate(forecast.dt, shortDateFormat)}
+        {isToday
+          ? strings.NEXT_7_DAYS_TODAY
+          : formatDate(forecast.dt + timezoneOffset, shortDateFormat)}
       </h3>
       <div className="text-gray-700 m-2">{icon ? React.createElement(icon) : null}</div>
       <p className="text-center text-sm">{toTitleCase(forecast.weather[0].description)}</p>

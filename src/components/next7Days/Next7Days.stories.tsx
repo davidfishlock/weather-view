@@ -14,4 +14,5 @@ const Template: ComponentStory<typeof Next7Days> = (args) => <Next7Days {...args
 export const Default = Template.bind({})
 Default.args = {
   forecast: DEFAULT_ONECALL_RESPONSE.daily,
+  timezoneOffset: DEFAULT_ONECALL_RESPONSE.timezoneOffset,
 }

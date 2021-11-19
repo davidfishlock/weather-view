@@ -5,7 +5,12 @@ import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
 import Next7Days from './Next7Days'
 
 function renderTarget() {
-  render(<Next7Days forecast={DEFAULT_ONECALL_RESPONSE.daily} />)
+  render(
+    <Next7Days
+      forecast={DEFAULT_ONECALL_RESPONSE.daily}
+      timezoneOffset={DEFAULT_ONECALL_RESPONSE.timezoneOffset}
+    />,
+  )
 }
 
 describe('Next7Days', () => {

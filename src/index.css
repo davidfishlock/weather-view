@@ -16,7 +16,7 @@
     }
 
     .timeline-tick {
-        @apply w-0.5 h-full w-32 flex flex-col-reverse;
+        @apply w-0.5 h-full flex flex-col-reverse;
     }
 
     .timeline-tick-half {

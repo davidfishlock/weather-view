@@ -32,12 +32,22 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
         <Alert alert={alert} />
       ))}
       {weatherData.current ? (
-        <CurrentWeather location={location} weather={weatherData.current} />
+        <CurrentWeather
+          location={location}
+          weather={weatherData.current}
+          timezoneOffset={weatherData.timezoneOffset}
+        />
       ) : null}
       {weatherData.minutely ? (
-        <Raincast location={location} forecast={weatherData.minutely} />
+        <Raincast
+          location={location}
+          forecast={weatherData.minutely}
+          timezoneOffset={weatherData.timezoneOffset}
+        />
       ) : null}
-      {weatherData.daily ? <Next7Days forecast={weatherData.daily} /> : null}
+      {weatherData.daily ? (
+        <Next7Days forecast={weatherData.daily} timezoneOffset={weatherData.timezoneOffset} />
+      ) : null}
     </>
   )
 }

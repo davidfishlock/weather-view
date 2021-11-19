@@ -9,6 +9,7 @@ import { formatString } from '../../utils/stringUtils'
 type Props = {
   forecast: MinutelyWeatherForecast[]
   className: string
+  timezoneOffset: number
 }
 
 const isRaining = (forecast: MinutelyWeatherForecast) => forecast.precipitation > 0
@@ -39,17 +40,15 @@ const getBarColor = (millimetres: number) => {
   return 'red-600'
 }
 
-const Timeline: React.FC<Props> = ({ forecast, className }) => (
-  <div
-    className={classNames(['bg-white', 'p-2', 'rounded-lg', 'bg-opacity-80', 'w-1/2', className])}
-  >
-    <p className="text-sm mb-1">{getRainStatus(forecast)}</p>
+const Timeline: React.FC<Props> = ({ forecast, timezoneOffset, className }) => (
+  <div className={classNames(['bg-white', 'p-2', 'rounded-lg', 'bg-opacity-80', className])}>
+    <p className="text-xs mb-1">{getRainStatus(forecast)}</p>
     <div className="text-xs flex flex-row justify-between mb-1">
       <span>now</span>
-      <span>{formatDate(forecast[29].dt, timeFormat)}</span>
-      <span>{formatDate(forecast[59].dt, timeFormat)}</span>
+      <span>{formatDate(forecast[29].dt + timezoneOffset, timeFormat)}</span>
+      <span>{formatDate(forecast[59].dt + timezoneOffset, timeFormat)}</span>
     </div>
-    <div className="flex flex-row h-5 mx-2 items-end justify-between">
+    <div className="flex flex-row h-3 mx-2 items-end gap-0.5">
       {forecast.map((minute, index) => (
         <div
           className={classNames([

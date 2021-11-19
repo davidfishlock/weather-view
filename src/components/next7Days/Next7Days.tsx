@@ -5,16 +5,17 @@ import Next7DaysItem from './Next7DaysItem'
 
 type Props = {
   forecast: DailyWeatherForecast[]
+  timezoneOffset: number
 }
 
-const Next7Days: React.FC<Props> = ({ forecast }) => (
+const Next7Days: React.FC<Props> = ({ forecast, timezoneOffset }) => (
   <section className="card">
     <IconContext.Provider value={{ className: 'icon-md' }}>
       <div className="grid grid-cols-4 md:grid-cols-8 gap-y-4">
         {forecast.map((day, index) => (
           <Next7DaysItem
             key={`DayItem:${day.dt}`}
-            data-testid="7days"
+            timezoneOffset={timezoneOffset}
             forecast={day}
             isToday={index === 0}
           />

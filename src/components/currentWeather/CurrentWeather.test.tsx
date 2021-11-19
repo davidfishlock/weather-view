@@ -7,7 +7,13 @@ import CurrentWeather from './CurrentWeather'
 const location = { name: 'Some Location', lat: 0, lon: 0 }
 
 function renderTarget() {
-  render(<CurrentWeather location={location} weather={DEFAULT_ONECALL_RESPONSE.current} />)
+  render(
+    <CurrentWeather
+      location={location}
+      weather={DEFAULT_ONECALL_RESPONSE.current}
+      timezoneOffset={DEFAULT_ONECALL_RESPONSE.timezoneOffset}
+    />,
+  )
 }
 
 describe('CurrentWeather', () => {
@@ -18,7 +24,7 @@ describe('CurrentWeather', () => {
 
   test('displays date', () => {
     renderTarget()
-    expect(screen.getByText('18 November 2021, 11:16')).toBeInTheDocument()
+    expect(screen.getByText('18 November 2021, 06:16')).toBeInTheDocument()
   })
 
   test('displays weather description', () => {

@@ -16,9 +16,10 @@ import { toTitleCase } from '../../utils/stringUtils'
 type Props = {
   location: City | { name: string; lat: number; lon: number }
   weather: CurrentWeatherReport
+  timezoneOffset: number
 }
 
-const CurrentWeather: React.FC<Props> = ({ location, weather }) => {
+const CurrentWeather: React.FC<Props> = ({ location, weather, timezoneOffset }) => {
   const weatherSummary = weather.weather[0]
   const icon = getWeatherIcon(weatherSummary.icon)
 
@@ -26,7 +27,7 @@ const CurrentWeather: React.FC<Props> = ({ location, weather }) => {
     <section className="card">
       <IconContext.Provider value={{ className: 'icon-lg' }}>
         <h3 className="text-2xl">{toTitleCase(location.name)}</h3>
-        <p>{formatDate(weather.dt)}</p>
+        <p>{formatDate(weather.dt + timezoneOffset)}</p>
         <div className="flex flex-row">
           <div className="text-gray-700 -ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
           <div>
