@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
-import Alert from './Alert'
+import AlertItem from './AlertItem'
 
 export default {
   title: 'Alert',
-  component: Alert,
+  component: AlertItem,
   argTypes: {},
-} as ComponentMeta<typeof Alert>
+} as ComponentMeta<typeof AlertItem>
 
-const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />
+const Template: ComponentStory<typeof AlertItem> = (args) => <AlertItem {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

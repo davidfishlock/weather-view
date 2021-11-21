@@ -4,12 +4,7 @@
     "es2021": true,
     "jest": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "prettier",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -35,29 +30,5 @@
     ]
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks"],
-  "rules": {
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": "error",
-    "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "error",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off",
-    "react/require-default-props": "off",
-    "import/extensions": "off",
-    "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/setupTests.js",
-          "**/test/*",
-          "**/*.test.{ts,tsx}",
-          "**/*.spec.{ts,tsx}",
-          "**/*.stories.{ts,tsx}"
-        ]
-      }
-    ]
-  }
+  "rules": {}
 }
