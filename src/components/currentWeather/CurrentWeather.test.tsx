@@ -1,4 +1,5 @@
 import { render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { strings } from '../../constants/strings'
 import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
@@ -6,12 +7,16 @@ import CurrentWeather from './CurrentWeather'
 
 const location = { name: 'Some Location', lat: 0, lon: 0 }
 
+const showAlertsMock = jest.fn()
+
 function renderTarget() {
   render(
     <CurrentWeather
       location={location}
       weather={DEFAULT_ONECALL_RESPONSE.current}
       timezoneOffset={DEFAULT_ONECALL_RESPONSE.timezoneOffset}
+      areAlertsAvailable={true}
+      onShowAlerts={showAlertsMock}
     />,
   )
 }
@@ -67,5 +72,12 @@ describe('CurrentWeather', () => {
     const pressureElement = screen.getByText(strings.CURRENT_WEATHER_PRESSURE).parentElement
     if (!pressureElement) throw new Error('pressureElement not found')
     expect(within(pressureElement).getByText('1017hPa')).toBeInTheDocument()
+  })
+
+  test('clicking alerts button opens alerts', () => {
+    renderTarget()
+
+    userEvent.click(screen.getByText(strings.CURRENT_WEATHER_ALERTS))
+    expect(showAlertsMock).toBeCalledTimes(1)
   })
 })

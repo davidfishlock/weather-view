@@ -51,6 +51,7 @@ const Timeline: React.FC<Props> = ({ forecast, timezoneOffset, className }) => (
     <div className="flex flex-row h-3 mx-2 items-end gap-0.5">
       {forecast.map((minute, index) => (
         <div
+          key={minute.dt}
           className={classNames([
             { 'timeline-tick': index % 15 === 0 },
             { 'timeline-tick-half': index % 15 !== 0 },

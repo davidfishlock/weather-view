@@ -8,6 +8,7 @@ export const strings = {
   CURRENT_WEATHER_UV: 'UV:',
   CURRENT_WEATHER_WIND: 'Wind:',
   CURRENT_WEATHER_PRESSURE: 'Pressure:',
+  CURRENT_WEATHER_ALERTS: 'Weather alerts',
   NEXT_7_DAYS_TODAY: 'Today',
   ALERT_VALID_FROM: 'Valid from:',
   ALERT_PROVIDER: 'Data provided by:',
@@ -16,4 +17,5 @@ export const strings = {
   RAIN_STATUS_INTERMITTENT: 'Intermittent precipitation for {0} minutes',
   RAIN_STATUS_STARTING: 'Precipitation starts in {0} minutes',
   RAIN_STATUS_FINISHING: 'Precipitation ends in {0} minutes',
+  MODAL_CLOSE: 'Close',
 }

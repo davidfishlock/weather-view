@@ -1,5 +1,6 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
+import { FiAlertTriangle } from 'react-icons/fi'
 import { WiWindDeg } from 'react-icons/wi'
 import { City, CurrentWeatherReport } from 'ts-open-weather-map'
 import { strings } from '../../constants/strings'
@@ -17,9 +18,17 @@ type Props = {
   location: City | { name: string; lat: number; lon: number }
   weather: CurrentWeatherReport
   timezoneOffset: number
+  areAlertsAvailable: boolean
+  onShowAlerts: () => void
 }
 
-const CurrentWeather: React.FC<Props> = ({ location, weather, timezoneOffset }) => {
+const CurrentWeather: React.FC<Props> = ({
+  location,
+  weather,
+  timezoneOffset,
+  areAlertsAvailable,
+  onShowAlerts,
+}) => {
   const weatherSummary = weather.weather[0]
   const icon = getWeatherIcon(weatherSummary.icon)
 
@@ -28,6 +37,12 @@ const CurrentWeather: React.FC<Props> = ({ location, weather, timezoneOffset }) 
       <IconContext.Provider value={{ className: 'icon-lg' }}>
         <h3 className="text-2xl">{toTitleCase(location.name)}</h3>
         <p>{formatDate(weather.dt + timezoneOffset)}</p>
+        {areAlertsAvailable ? (
+          <button className="alert-button my-2" type="button" onClick={onShowAlerts}>
+            <FiAlertTriangle className="h-6 w-6 mr-2 inline" /> {strings.CURRENT_WEATHER_ALERTS}
+          </button>
+        ) : null}
+
         <div className="flex flex-row">
           <div className="text-gray-700 -ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
           <div>
