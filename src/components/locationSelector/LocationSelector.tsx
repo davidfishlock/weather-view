@@ -1,39 +1,67 @@
 import classNames from 'classnames'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 import { BiCurrentLocation } from 'react-icons/bi'
+import { FiX } from 'react-icons/fi'
 import { City } from 'ts-open-weather-map'
 import { strings } from '../../constants/strings'
 import { useLocationContext } from '../../contexts/Location'
 import { Location } from '../../types/location'
 import { api } from '../../utils/weatherApi'
 
-// ToDo: Surface errors to UI
 const fetchSuggestions = debounce(
-  (search: string, setSuggestions: React.Dispatch<React.SetStateAction<City[]>>) =>
+  (
+    search: string,
+    setSuggestions: React.Dispatch<React.SetStateAction<City[]>>,
+    setError: React.Dispatch<React.SetStateAction<Error | undefined>>,
+  ) =>
     api
       .geoCoding(search, 5)
-      .then((results) => setSuggestions(results))
-      .catch(),
+      .then((results) => {
+        setSuggestions(results)
+        setError(undefined)
+      })
+      .catch((error) => {
+        setSuggestions([])
+        setError(error)
+      }),
   500,
 )
 
 const LocationSelector: React.FC = () => {
   const [suggestions, setSuggestions] = useState<City[]>([])
   const [query, setQuery] = useState<string>('')
+  const [error, setError] = useState<Error>()
   const { userLocation, setSelectedLocation } = useLocationContext()
+
+  const clear = () => {
+    setQuery('')
+  }
+
+  useHotkeys(
+    'Escape',
+    clear,
+    {
+      enableOnTags: ['INPUT'],
+    },
+    [clear],
+  )
 
   useEffect(() => {
     if (!query || query.length < 3) {
       setSuggestions([])
+      fetchSuggestions.cancel()
+      setError(undefined)
       return
     }
-    fetchSuggestions(query, setSuggestions)
+
+    fetchSuggestions(query, setSuggestions, setError)
   }, [query])
 
   const onLocationClicked = (location: Location) => {
     setSelectedLocation(location)
-    setQuery('')
+    clear()
   }
 
   return (
@@ -49,20 +77,34 @@ const LocationSelector: React.FC = () => {
         </button>
       )}
       <div className="relative w-60">
-        <input
-          className="border border-gray-300 rounded-md w-full px-2 py-1 relative z-10"
-          type="text"
-          value={query}
-          placeholder={strings.LOCATION_SEARCH}
-          onChange={(e) => setQuery(e.currentTarget.value)}
-        />
+        <div className="relative z-10">
+          <input
+            className="w-full border border-gray-300 rounded-md px-2 py-1"
+            type="text"
+            value={query}
+            placeholder={strings.LOCATION_SEARCH}
+            onChange={(e) => setQuery(e.currentTarget.value)}
+          />
+
+          {!!query && (
+            <button
+              className="absolute right-0 top-0 bottom-0 px-2 rounded-md hover:bg-gray-200 m-1"
+              type="button"
+              onClick={clear}
+              aria-label={strings.LOCATION_SEARCH_CLEAR}
+            >
+              <FiX className="h-4 w-4" />
+            </button>
+          )}
+        </div>
 
         <ul
           className={classNames(
             'absolute border p-2 border-t-0 -mt-1 pt-3 rounded-b-md w-full bg-white',
-            { hidden: suggestions.length === 0 },
+            { hidden: suggestions.length === 0 && !error },
           )}
         >
+          {!!error && <p className="text-sm text-red-700">{strings.LOCATION_SEARCH_ERROR}</p>}
           {suggestions.map((location) => (
             <li key={`${location.name}${location.lat}${location.lon}`}>
               <button

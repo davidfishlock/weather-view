@@ -1,5 +1,7 @@
 export const strings = {
   LOCATION_SEARCH: 'Search location',
+  LOCATION_SEARCH_CLEAR: 'Clear search',
+  LOCATION_SEARCH_ERROR: 'Error searching cities, please check your connection.',
   CURRENT_LOCATION: 'Current Location',
   CURRENT_LOCATION_BUTTON: 'Use current Location',
   SELECT_LOCATION: 'Please select a location.',
