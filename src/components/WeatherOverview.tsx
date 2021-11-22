@@ -6,6 +6,7 @@ import { getUnitsForLocale } from '../utils/numberFormatter'
 import { api } from '../utils/weatherApi'
 import AlertItem from './alert/AlertItem'
 import CurrentWeather from './currentWeather/CurrentWeather'
+import Hourly from './hourly/Hourly'
 import Modal from './modal/Modal'
 import Next7Days from './next7Days/Next7Days'
 import Raincast from './rainCast/Raincast'
@@ -46,7 +47,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
 
   return (
     <>
-      {weatherData.current ? (
+      {!!weatherData.current && (
         <CurrentWeather
           location={location}
           weather={weatherData.current}
@@ -54,17 +55,20 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
           areAlertsAvailable={!!weatherData.alerts?.length}
           onShowAlerts={openAlerts}
         />
-      ) : null}
-      {weatherData.minutely ? (
+      )}
+      {!!weatherData.minutely && (
         <Raincast
           location={location}
           forecast={weatherData.minutely}
           timezoneOffset={weatherData.timezoneOffset}
         />
-      ) : null}
-      {weatherData.daily ? (
+      )}
+      {!!weatherData.hourly && (
+        <Hourly forecast={weatherData.hourly} timezoneOffset={weatherData.timezoneOffset} />
+      )}
+      {!!weatherData.daily && (
         <Next7Days forecast={weatherData.daily} timezoneOffset={weatherData.timezoneOffset} />
-      ) : null}
+      )}
 
       {isAlertModalOpen && (
         <Portal>

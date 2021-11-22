@@ -44,7 +44,7 @@ const Timeline: React.FC<Props> = ({ forecast, timezoneOffset, className }) => (
   <div className={classNames(['bg-white', 'p-2', 'rounded-lg', 'bg-opacity-80', className])}>
     <p className="text-xs mb-1">{getRainStatus(forecast)}</p>
     <div className="text-xs flex flex-row justify-between mb-1">
-      <span>now</span>
+      <span>{strings.TIME_NOW}</span>
       <span>{formatDate(forecast[29].dt + timezoneOffset, timeFormat)}</span>
       <span>{formatDate(forecast[59].dt + timezoneOffset, timeFormat)}</span>
     </div>

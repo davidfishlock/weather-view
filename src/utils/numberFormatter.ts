@@ -8,12 +8,12 @@ export function getUnitsForLocale(locale: string): MeasurementUnit {
   return isImperialLocale(locale) ? 'imperial' : 'metric'
 }
 
-export function formatTemperature(temperature: number): string {
+export function formatTemperature(temperature: number, digits = 0): string {
   const locale = window.navigator.language
   return Intl.NumberFormat(locale, {
     style: 'unit',
     unit: isImperialLocale(locale) ? 'fahrenheit' : 'celsius',
-    maximumFractionDigits: 0,
+    maximumFractionDigits: digits,
   }).format(temperature)
 }
 
