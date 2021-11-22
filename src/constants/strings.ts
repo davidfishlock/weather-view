@@ -4,7 +4,7 @@ export const strings = {
   LOCATION_SEARCH_ERROR: 'Error searching cities, please check your connection.',
   CURRENT_LOCATION: 'Current Location',
   CURRENT_LOCATION_BUTTON: 'Use current Location',
-  SELECT_LOCATION: 'Please select a location.',
+  SELECT_LOCATION: 'To get started, enable location services or search for a location.',
   CURRENT_WEATHER_FEELS_LIKE: 'Feels like:',
   CURRENT_WEATHER_HUMIDITY: 'Humidity:',
   CURRENT_WEATHER_UV: 'UV:',
@@ -20,4 +20,7 @@ export const strings = {
   RAIN_STATUS_STARTING: 'Precipitation starts in {0} minutes',
   RAIN_STATUS_FINISHING: 'Precipitation ends in {0} minutes',
   MODAL_CLOSE: 'Close',
+  LOADING: 'Loading',
+  DATA_LOAD_ERROR:
+    'There was an error loading weather for this location. Please check your connection and refresh the page.',
 }

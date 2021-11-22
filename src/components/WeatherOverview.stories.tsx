@@ -59,7 +59,7 @@ Loading.parameters = {
       method: 'GET',
       status: 200,
       response: DEFAULT_ONECALL_RESPONSE,
-      delay: 5000,
+      delay: 500000,
     },
   ],
 }

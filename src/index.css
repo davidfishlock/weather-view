@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+    .error {
+        @apply text-red-700
+    }
+
+    .inline-message {
+        @apply text-lg text-center
+    }
+
     .card {
         @apply shadow-md border-gray-300 border rounded-2xl p-4 mb-4;
     }

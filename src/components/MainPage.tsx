@@ -22,7 +22,7 @@ const MainPage: React.FC = () => {
     })
   }, [userLocation, setUserLocation, selectedLocation, setSelectedLocation])
 
-  if (!selectedLocation) return <p>{strings.SELECT_LOCATION}</p>
+  if (!selectedLocation) return <p className="inline-message">{strings.SELECT_LOCATION}</p>
 
   return <WeatherOverview location={selectedLocation} />
 }

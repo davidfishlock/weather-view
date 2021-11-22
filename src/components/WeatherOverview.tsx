@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import usePortal from 'react-useportal'
 import { City, OneCallResponse } from 'ts-open-weather-map'
+import { strings } from '../constants/strings'
 import { api } from '../utils/weatherApi'
 import AlertItem from './alert/AlertItem'
 import CurrentWeather from './currentWeather/CurrentWeather'
 import Modal from './modal/Modal'
 import Next7Days from './next7Days/Next7Days'
 import Raincast from './rainCast/Raincast'
+import Spinner from './spinner/Spinner'
 
 type Props = { location: City | { name: string; lat: number; lon: number } }
 
@@ -32,8 +34,14 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
       .finally(() => setIsLoading(false))
   }, [location])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!weatherData || error) return <p>There was an error.</p>
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center my-10">
+        <Spinner />
+      </div>
+    )
+  if (!weatherData || error)
+    return <p className="error inline-message">{strings.DATA_LOAD_ERROR}</p>
 
   return (
     <>
