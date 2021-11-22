@@ -104,7 +104,7 @@ const LocationSelector: React.FC = () => {
             { hidden: suggestions.length === 0 && !error },
           )}
         >
-          {!!error && <p className="text-sm text-red-700">{strings.LOCATION_SEARCH_ERROR}</p>}
+          {!!error && <p className="error text-sm">{strings.LOCATION_SEARCH_ERROR}</p>}
           {suggestions.map((location) => (
             <li key={`${location.name}${location.lat}${location.lon}`}>
               <button
