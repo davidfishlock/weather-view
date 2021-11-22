@@ -7,10 +7,10 @@ import { strings } from '../../constants/strings'
 import { getWeatherIcon } from '../../utils/iconUtils'
 import {
   formatDate,
-  formatMetresPerSecond,
   formatPercentage,
   formatPressure,
   formatTemperature,
+  formatWindSpeed,
 } from '../../utils/numberFormatter'
 import { toTitleCase } from '../../utils/stringUtils'
 
@@ -70,7 +70,7 @@ const CurrentWeather: React.FC<Props> = ({
                   className="h-6 w-6 ml-1 mb-0.5 inline"
                   style={{ transform: `rotate(${weather.windDeg}deg)` }}
                 />
-                {formatMetresPerSecond(weather.windSpeed)}
+                {formatWindSpeed(weather.windSpeed)}
               </p>
               <p>
                 <span className="font-semibold">{strings.CURRENT_WEATHER_PRESSURE}</span>{' '}

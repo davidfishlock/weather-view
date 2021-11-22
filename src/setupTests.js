@@ -6,3 +6,8 @@ const mockGeolocation = {
 }
 
 global.navigator.geolocation = mockGeolocation
+global.mockLanguage = jest.spyOn(navigator, 'language', 'get')
+
+global.beforeEach(() => {
+  global.mockLanguage.mockReturnValue('en-GB')
+})
