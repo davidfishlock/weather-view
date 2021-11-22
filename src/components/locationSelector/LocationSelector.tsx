@@ -82,6 +82,7 @@ const LocationSelector: React.FC = () => {
             className="w-full border border-gray-300 rounded-md px-2 py-1"
             type="text"
             value={query}
+            aria-label={strings.LOCATION_SEARCH}
             placeholder={strings.LOCATION_SEARCH}
             onChange={(e) => setQuery(e.currentTarget.value)}
           />
