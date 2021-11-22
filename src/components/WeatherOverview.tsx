@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import usePortal from 'react-useportal'
 import { City, OneCallResponse } from 'ts-open-weather-map'
 import { strings } from '../constants/strings'
+import { getUnitsForLocale } from '../utils/numberFormatter'
 import { api } from '../utils/weatherApi'
 import AlertItem from './alert/AlertItem'
 import CurrentWeather from './currentWeather/CurrentWeather'
@@ -28,7 +29,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
     setIsLoading(true)
 
     api
-      .oneCall(location.lat, location.lon, undefined, 'metric')
+      .oneCall(location.lat, location.lon, undefined, getUnitsForLocale(window.navigator.language))
       .then(setWeatherData)
       .catch(setError)
       .finally(() => setIsLoading(false))

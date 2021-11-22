@@ -1,31 +1,42 @@
-const locales = 'en-GB'
+import { MeasurementUnit } from 'ts-open-weather-map'
+
+function isImperialLocale(locale: string): boolean {
+  return locale.startsWith('my') || locale === 'en-US'
+}
+
+export function getUnitsForLocale(locale: string): MeasurementUnit {
+  return isImperialLocale(locale) ? 'imperial' : 'metric'
+}
 
 export function formatTemperature(temperature: number): string {
-  return Intl.NumberFormat(locales, {
+  const locale = window.navigator.language
+  return Intl.NumberFormat(locale, {
     style: 'unit',
-    unit: 'celsius',
+    unit: isImperialLocale(locale) ? 'fahrenheit' : 'celsius',
     maximumFractionDigits: 0,
   }).format(temperature)
 }
 
 export function formatPercentage(input: number): string {
-  return Intl.NumberFormat(locales, {
+  return Intl.NumberFormat(window.navigator.language, {
     style: 'unit',
     unit: 'percent',
     maximumFractionDigits: 0,
   }).format(input)
 }
 
-export function formatMetresPerSecond(speed: number): string {
-  return Intl.NumberFormat(locales, {
+export function formatWindSpeed(speed: number): string {
+  const locale = window.navigator.language
+  const isImperial = isImperialLocale(locale)
+  return Intl.NumberFormat(locale, {
     style: 'unit',
-    unit: 'meter-per-second',
-    maximumFractionDigits: 1,
+    unit: isImperial ? 'mile-per-hour' : 'meter-per-second',
+    maximumFractionDigits: isImperial ? 0 : 1,
   }).format(speed)
 }
 
 export function formatPressure(input: number): string {
-  return `${Intl.NumberFormat(locales, {
+  return `${Intl.NumberFormat(window.navigator.language, {
     maximumFractionDigits: 0,
     useGrouping: false,
   }).format(input)}hPa`
@@ -61,5 +72,5 @@ export function formatDate(
   timestamp: number,
   options: Intl.DateTimeFormatOptions = fullDateTimeFormat,
 ): string {
-  return Intl.DateTimeFormat(locales, options).format(new Date(timestamp * 1000))
+  return Intl.DateTimeFormat(window.navigator.language, options).format(new Date(timestamp * 1000))
 }
