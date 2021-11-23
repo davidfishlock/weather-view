@@ -4,7 +4,6 @@ import { strings } from '../../../constants/strings'
 import { testIds } from '../../../constants/testIds'
 import { getWeatherIcon } from '../../../utils/iconUtils'
 import { formatDate, formatTemperature, shortDateFormat } from '../../../utils/numberFormatter'
-import { toTitleCase } from '../../../utils/stringUtils'
 
 type Props = {
   forecast: DailyWeatherForecast
@@ -29,7 +28,7 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
       <p>
         {formatTemperature(forecast.temp.max)} / {formatTemperature(forecast.temp.min)}
       </p>
-      <p className="text-center text-sm">{toTitleCase(forecast.weather[0].description)}</p>
+      <p className="text-center text-sm capitalize">{forecast.weather[0].description}</p>
     </div>
   )
 }

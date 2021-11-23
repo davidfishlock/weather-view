@@ -1,16 +1,6 @@
-import { formatString, toTitleCase } from './stringUtils'
+import { formatString } from './stringUtils'
 
 describe('stringUtils', () => {
-  describe('toTitleCase', () => {
-    test('converts input string to title case', () => {
-      const input = 'a string'
-
-      const output = toTitleCase(input)
-
-      expect(output).toEqual('A String')
-    })
-  })
-
   describe('formatString', () => {
     const stringFormatTheories = [
       [

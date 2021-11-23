@@ -34,7 +34,7 @@ describe('CurrentWeather', () => {
 
   test('displays weather description', () => {
     renderTarget()
-    expect(screen.getByText('Moderate Rain')).toBeInTheDocument()
+    expect(screen.getByText('moderate rain')).toBeInTheDocument()
   })
 
   test('displays temperature', () => {
