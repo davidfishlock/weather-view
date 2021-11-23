@@ -26,9 +26,9 @@ describe('Next7DaysItem', () => {
     expect(screen.getByText('19 Nov')).toBeInTheDocument()
   })
 
-  test('displays weather description in title case', () => {
+  test('displays weather description', () => {
     renderTarget(DEFAULT_ONECALL_RESPONSE.daily[1])
-    expect(screen.getByText('Moderate Rain')).toBeInTheDocument()
+    expect(screen.getByText('moderate rain')).toBeInTheDocument()
   })
 
   test('displays min and max temperatures', () => {

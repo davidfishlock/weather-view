@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+
 @layer components {
     .error {
         @apply text-red-700
@@ -12,7 +14,7 @@
     }
 
     .card {
-        @apply shadow-md border-gray-300 border rounded-2xl p-4 mb-4;
+        @apply border-gray-300 border-t p-4 md:shadow-md md:border md:rounded-2xl;
     }
 
     .button {

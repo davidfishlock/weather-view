@@ -46,9 +46,10 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
     return <p className="error inline-message">{strings.DATA_LOAD_ERROR}</p>
 
   return (
-    <>
+    <div className="grid grid-cols-5 md:gap-4">
       {!!weatherData.current && (
         <CurrentWeather
+          className="col-span-5 md:col-span-2"
           location={location}
           weather={weatherData.current}
           timezoneOffset={weatherData.timezoneOffset}
@@ -58,16 +59,25 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
       )}
       {!!weatherData.minutely && (
         <Raincast
+          className="col-span-5 md:col-span-3 h-60 md:h-auto"
           location={location}
           forecast={weatherData.minutely}
           timezoneOffset={weatherData.timezoneOffset}
         />
       )}
       {!!weatherData.hourly && (
-        <Hourly forecast={weatherData.hourly} timezoneOffset={weatherData.timezoneOffset} />
+        <Hourly
+          className="col-span-5"
+          forecast={weatherData.hourly}
+          timezoneOffset={weatherData.timezoneOffset}
+        />
       )}
       {!!weatherData.daily && (
-        <Next7Days forecast={weatherData.daily} timezoneOffset={weatherData.timezoneOffset} />
+        <Next7Days
+          className="col-span-5"
+          forecast={weatherData.daily}
+          timezoneOffset={weatherData.timezoneOffset}
+        />
       )}
 
       {isAlertModalOpen && (
@@ -79,7 +89,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
           </Modal>
         </Portal>
       )}
-    </>
+    </div>
   )
 }
 

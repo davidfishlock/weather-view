@@ -7,6 +7,32 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      xs: '370px',
+      sm: '480px',
+      md: '640px',
+      lg: '768px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
+    fontFamily: {
+      sans: [
+        'Outfit',
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
+    },
     extend: {
       fontSize: {
         '2xs': '.6rem',

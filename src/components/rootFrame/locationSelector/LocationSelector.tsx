@@ -110,7 +110,7 @@ const LocationSelector: React.FC = () => {
             <li key={`${location.name}${location.lat}${location.lon}`}>
               <button
                 type="button"
-                className="hover:underline"
+                className="hover:underline py-1"
                 onClick={() => onLocationClicked(location)}
               >
                 {getFullLocationName(location)}
