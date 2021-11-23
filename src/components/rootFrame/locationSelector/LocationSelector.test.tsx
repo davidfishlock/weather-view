@@ -1,9 +1,9 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { strings } from '../../constants/strings'
-import * as locationContext from '../../contexts/Location'
-import { Location } from '../../types/location'
+import { strings } from '../../../constants/strings'
+import * as locationContext from '../../../contexts/Location'
+import { Location } from '../../../types/location'
 import LocationSelector from './LocationSelector'
 
 const DEFAULT_SEARCH_QUERY = 'Somewhere'
@@ -25,7 +25,7 @@ const DEFAULT_CITIES_RESPONSE = [
 const mockSetLocation = jest.fn()
 const mockGeoCoding = jest.fn()
 
-jest.mock('../../utils/weatherApi', () => ({
+jest.mock('../../../utils/weatherApi', () => ({
   get api() {
     return {
       geoCoding: mockGeoCoding,

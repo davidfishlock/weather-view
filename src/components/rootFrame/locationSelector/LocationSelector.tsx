@@ -5,10 +5,10 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import { BiCurrentLocation } from 'react-icons/bi'
 import { FiX } from 'react-icons/fi'
 import { City } from 'ts-open-weather-map'
-import { strings } from '../../constants/strings'
-import { useLocationContext } from '../../contexts/Location'
-import { Location } from '../../types/location'
-import { api } from '../../utils/weatherApi'
+import { strings } from '../../../constants/strings'
+import { useLocationContext } from '../../../contexts/Location'
+import { getFullLocationName, Location } from '../../../types/location'
+import { api } from '../../../utils/weatherApi'
 
 const fetchSuggestions = debounce(
   (
@@ -69,17 +69,17 @@ const LocationSelector: React.FC = () => {
       {!!userLocation && (
         <button
           type="button"
-          className="mr-1"
+          className="button-subtle mr-0.5 p-1"
           aria-label={strings.CURRENT_LOCATION_BUTTON}
           onClick={() => setSelectedLocation(userLocation)}
         >
-          <BiCurrentLocation className="h-6 w-6" />
+          <BiCurrentLocation className="icon-gray h-6 w-6" />
         </button>
       )}
       <div className="relative w-60">
         <div className="relative z-10">
           <input
-            className="w-full border border-gray-300 rounded-md px-2 py-1"
+            className="input-text w-full"
             type="text"
             value={query}
             aria-label={strings.LOCATION_SEARCH}
@@ -89,12 +89,12 @@ const LocationSelector: React.FC = () => {
 
           {!!query && (
             <button
-              className="absolute right-0 top-0 bottom-0 px-2 rounded-md hover:bg-gray-200 m-1"
+              className="button-subtle absolute right-0 top-0 bottom-0 m-1"
               type="button"
               onClick={clear}
               aria-label={strings.LOCATION_SEARCH_CLEAR}
             >
-              <FiX className="h-4 w-4" />
+              <FiX className="icon-gray h-4 w-4" />
             </button>
           )}
         </div>
@@ -113,9 +113,7 @@ const LocationSelector: React.FC = () => {
                 className="hover:underline"
                 onClick={() => onLocationClicked(location)}
               >
-                {location.name}
-                {location.state ? `, ${location.state}` : ''}
-                {location.country ? `, ${location.country}` : ''}
+                {getFullLocationName(location)}
               </button>
             </li>
           ))}

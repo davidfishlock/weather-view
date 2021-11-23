@@ -16,11 +16,27 @@
     }
 
     .button {
-        @apply bg-blue-500 hover:bg-blue-700 text-white text-white font-semibold py-2 px-2 rounded flex flex-row
+        @apply bg-blue-500 hover:bg-blue-700 text-white text-white font-semibold p-2 rounded-md flex flex-row items-center
     }
 
-    .alert-button {
+    .button-alert {
         @apply button bg-red-600 hover:bg-red-700
+    }
+
+    .button-subtle {
+        @apply button bg-transparent hover:bg-gray-200
+    }
+
+    .input-text {
+        @apply border border-gray-300 rounded-md px-2 py-1
+    }
+
+    .icon-white {
+        @apply text-white
+    }
+
+    .icon-gray {
+        @apply text-gray-700
     }
 
     .icon-md {

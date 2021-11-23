@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { DailyWeatherForecast } from 'ts-open-weather-map'
-import { strings } from '../../constants/strings'
-import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
+import { strings } from '../../../constants/strings'
+import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
 import Next7DaysItem from './Next7DaysItem'
 
 function renderTarget(forecast: DailyWeatherForecast, isToday = false) {
@@ -23,7 +23,7 @@ describe('Next7DaysItem', () => {
 
   test('displays date for subsequent items', () => {
     renderTarget(DEFAULT_ONECALL_RESPONSE.daily[1])
-    expect(screen.getByText('Fri, 19 Nov')).toBeInTheDocument()
+    expect(screen.getByText('19 Nov')).toBeInTheDocument()
   })
 
   test('displays weather description in title case', () => {

@@ -1,10 +1,10 @@
 import React from 'react'
 import { DailyWeatherForecast } from 'ts-open-weather-map'
-import { strings } from '../../constants/strings'
-import { testIds } from '../../constants/testIds'
-import { getWeatherIcon } from '../../utils/iconUtils'
-import { formatDate, formatTemperature, shortDateFormat } from '../../utils/numberFormatter'
-import { toTitleCase } from '../../utils/stringUtils'
+import { strings } from '../../../constants/strings'
+import { testIds } from '../../../constants/testIds'
+import { getWeatherIcon } from '../../../utils/iconUtils'
+import { formatDate, formatTemperature, shortDateFormat } from '../../../utils/numberFormatter'
+import { toTitleCase } from '../../../utils/stringUtils'
 
 type Props = {
   forecast: DailyWeatherForecast
@@ -25,11 +25,11 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
           ? strings.NEXT_7_DAYS_TODAY
           : formatDate(forecast.dt + timezoneOffset, shortDateFormat)}
       </h3>
-      <div className="text-gray-700 m-2">{icon ? React.createElement(icon) : null}</div>
-      <p className="text-center text-sm">{toTitleCase(forecast.weather[0].description)}</p>
+      <div className="m-2">{icon ? React.createElement(icon) : null}</div>
       <p>
         {formatTemperature(forecast.temp.max)} / {formatTemperature(forecast.temp.min)}
       </p>
+      <p className="text-center text-sm">{toTitleCase(forecast.weather[0].description)}</p>
     </div>
   )
 }

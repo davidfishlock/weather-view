@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { strings } from '../constants/strings'
 import { useLocationContext } from '../contexts/Location'
-import WeatherOverview from './WeatherOverview'
+import WeatherOverview from './weatherOverview/WeatherOverview'
 
 const MainPage: React.FC = () => {
   const { userLocation, setUserLocation, selectedLocation, setSelectedLocation } =

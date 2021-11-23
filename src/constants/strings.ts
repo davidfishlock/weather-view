@@ -14,6 +14,7 @@ export const strings = {
   NEXT_7_DAYS_TODAY: 'Today',
   ALERT_VALID_FROM: 'Valid from:',
   ALERT_PROVIDER: 'Data provided by:',
+  TIME_NOW: 'now',
   RAIN_STATUS_NONE: 'No precipitation within {0} minutes',
   RAIN_STATUS_CONTINUING: 'Precipitation continues for {0} minutes',
   RAIN_STATUS_INTERMITTENT: 'Intermittent precipitation for {0} minutes',

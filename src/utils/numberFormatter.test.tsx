@@ -90,10 +90,10 @@ describe('numberFormatter', () => {
 
   describe('formatDate', () => {
     const shortDateTheories = [
-      ['en-GB', 1637584109, 'Mon, 22 Nov'],
-      ['en-US', 1637584109, 'Mon, Nov 22'],
-      ['fr-FR', 1637584109, 'lun. 22 nov.'],
-      ['de-DE', 1637584109, 'Mo., 22. Nov.'],
+      ['en-GB', 1637584109, '22 Nov'],
+      ['en-US', 1637584109, 'Nov 22'],
+      ['fr-FR', 1637584109, '22 nov.'],
+      ['de-DE', 1637584109, '22. Nov.'],
     ] as const
 
     test.each(shortDateTheories)(

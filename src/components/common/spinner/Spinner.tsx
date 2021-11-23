@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
-import { strings } from '../../constants/strings'
+import { strings } from '../../../constants/strings'
 
 type Props = {
   size?: 'sm' | 'md' | 'lg'

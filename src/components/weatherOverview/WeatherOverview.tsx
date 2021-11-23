@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import usePortal from 'react-useportal'
 import { City, OneCallResponse } from 'ts-open-weather-map'
-import { strings } from '../constants/strings'
-import { getUnitsForLocale } from '../utils/numberFormatter'
-import { api } from '../utils/weatherApi'
-import AlertItem from './alert/AlertItem'
+import { strings } from '../../constants/strings'
+import { getUnitsForLocale } from '../../utils/numberFormatter'
+import { api } from '../../utils/weatherApi'
+import AlertItem from '../alert/AlertItem'
+import Modal from '../common/modal/Modal'
+import Spinner from '../common/spinner/Spinner'
 import CurrentWeather from './currentWeather/CurrentWeather'
-import Modal from './modal/Modal'
+import Hourly from './hourly/Hourly'
 import Next7Days from './next7Days/Next7Days'
 import Raincast from './rainCast/Raincast'
-import Spinner from './spinner/Spinner'
 
 type Props = { location: City | { name: string; lat: number; lon: number } }
 
@@ -46,7 +47,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
 
   return (
     <>
-      {weatherData.current ? (
+      {!!weatherData.current && (
         <CurrentWeather
           location={location}
           weather={weatherData.current}
@@ -54,17 +55,20 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
           areAlertsAvailable={!!weatherData.alerts?.length}
           onShowAlerts={openAlerts}
         />
-      ) : null}
-      {weatherData.minutely ? (
+      )}
+      {!!weatherData.minutely && (
         <Raincast
           location={location}
           forecast={weatherData.minutely}
           timezoneOffset={weatherData.timezoneOffset}
         />
-      ) : null}
-      {weatherData.daily ? (
+      )}
+      {!!weatherData.hourly && (
+        <Hourly forecast={weatherData.hourly} timezoneOffset={weatherData.timezoneOffset} />
+      )}
+      {!!weatherData.daily && (
         <Next7Days forecast={weatherData.daily} timezoneOffset={weatherData.timezoneOffset} />
-      ) : null}
+      )}
 
       {isAlertModalOpen && (
         <Portal>

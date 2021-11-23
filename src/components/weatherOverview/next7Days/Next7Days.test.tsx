@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import { testIds } from '../../constants/testIds'
-import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
+import { testIds } from '../../../constants/testIds'
+import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
 import Next7Days from './Next7Days'
 
 function renderTarget() {

@@ -10,7 +10,7 @@ type Props = {
 
 const Next7Days: React.FC<Props> = ({ forecast, timezoneOffset }) => (
   <section className="card">
-    <IconContext.Provider value={{ className: 'icon-md' }}>
+    <IconContext.Provider value={{ className: 'icon-gray icon-md' }}>
       <div className="grid grid-cols-4 md:grid-cols-8 gap-y-4">
         {forecast.map((day, index) => (
           <Next7DaysItem

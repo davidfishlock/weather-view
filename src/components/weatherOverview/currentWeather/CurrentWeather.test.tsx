@@ -1,8 +1,8 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { strings } from '../../constants/strings'
-import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
+import { strings } from '../../../constants/strings'
+import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
 import CurrentWeather from './CurrentWeather'
 
 const location = { name: 'Some Location', lat: 0, lon: 0 }

@@ -1,6 +1,19 @@
 {
   "name": "weather-view",
   "version": "0.1.0",
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "format:check": "npx prettier --ignore-path .gitignore --check \"./**/*.{ts,tsx,json,md,html,scss}\"",
+    "format:fix": "npx prettier --ignore-path .gitignore --write \"./**/*.{ts,tsx,json,md,html,scss}\"",
+    "lint:check": "eslint . --ext ts,tsx",
+    "types:check": "npx tsc -p tsconfig.json",
+    "audit:check": "npm audit --production",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "@react-leaflet/core": "1.0.2",
@@ -13,6 +26,7 @@
     "react-icons": "^4.3.1",
     "react-leaflet": "3.1.0",
     "react-useportal": "^1.0.14",
+    "react-vis": "^1.11.7",
     "ts-open-weather-map": "^0.0.9"
   },
   "devDependencies": {
@@ -33,6 +47,7 @@
     "@types/node": "^12.20.37",
     "@types/react": "^17.0.35",
     "@types/react-dom": "^17.0.11",
+    "@types/react-vis": "^1.11.10",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
     "autoprefixer": "^9.8.8",
@@ -52,19 +67,6 @@
     "storybook-addon-mock": "^1.7.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "typescript": "^4.4.4"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "format:check": "npx prettier --ignore-path .gitignore --check \"./**/*.{ts,tsx,json,md,html,scss}\"",
-    "format:fix": "npx prettier --ignore-path .gitignore --write \"./**/*.{ts,tsx,json,md,html,scss}\"",
-    "lint:check": "eslint . --ext ts,tsx",
-    "types:check": "npx tsc -p tsconfig.json",
-    "audit:check": "npm audit --production",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import { strings } from '../../constants/strings'
+import { strings } from '../../../constants/strings'
 import Modal from './Modal'
 
 const onCloseMock = jest.fn()

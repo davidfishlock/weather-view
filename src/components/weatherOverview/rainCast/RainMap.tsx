@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
-import { Location } from '../../types/location'
+import { Location } from '../../../types/location'
 
 type Props = {
   location: Location

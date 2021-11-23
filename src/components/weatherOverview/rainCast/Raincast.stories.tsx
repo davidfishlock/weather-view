@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
-import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
+import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
 import Raincast from './Raincast'
 
 export default {

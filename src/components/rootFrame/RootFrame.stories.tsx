@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import withMock from 'storybook-addon-mock'
-import { DEFAULT_GEOCODING_RESPONSE } from '../testUtils/sampleData'
+import { DEFAULT_GEOCODING_RESPONSE } from '../../testUtils/sampleData'
 import RootFrame from './RootFrame'
 
 export default {

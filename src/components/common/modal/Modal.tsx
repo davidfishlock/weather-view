@@ -1,7 +1,7 @@
 import React from 'react'
 import { FiX } from 'react-icons/fi'
-import { strings } from '../../constants/strings'
-import useLockBodyScroll from '../../hooks/useLockBodyScroll'
+import { strings } from '../../../constants/strings'
+import useLockBodyScroll from '../../../hooks/useLockBodyScroll'
 
 type Props = {
   title: string
