@@ -303,10 +303,7 @@ export const DEFAULT_ONECALL_RESPONSE = {
           icon: '13n',
         },
       ],
-      pop: 1,
-      rain: {
-        '1h': 0.44,
-      },
+      pop: 0,
     },
     {
       dt: 1637236800,
@@ -357,7 +354,7 @@ export const DEFAULT_ONECALL_RESPONSE = {
       ],
       pop: 1,
       rain: {
-        '1h': 0.15,
+        '1h': 8.5,
       },
     },
     {

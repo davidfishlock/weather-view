@@ -43,7 +43,6 @@ export function formatPressure(input: number): string {
 }
 
 export const shortDateFormat = {
-  weekday: 'short',
   month: 'short',
   day: 'numeric',
 } as const
