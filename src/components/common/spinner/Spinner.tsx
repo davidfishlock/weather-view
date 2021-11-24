@@ -14,12 +14,12 @@ const Spinner: React.FC<Props> = ({ size = 'md', className }) => {
       aria-label={strings.LOADING}
       className={classNames([
         'border-t-4 animate-spin rounded-full border-blue-500',
-        { 'h-16': size === 'sm' },
-        { 'w-16': size === 'sm' },
-        { 'h-24': size === 'md' },
-        { 'w-24': size === 'md' },
-        { 'h-32': size === 'lg' },
-        { 'w-32': size === 'lg' },
+        { 'h-10': size === 'sm' },
+        { 'w-10': size === 'sm' },
+        { 'h-16': size === 'md' },
+        { 'w-16': size === 'md' },
+        { 'h-24': size === 'lg' },
+        { 'w-24': size === 'lg' },
         className,
       ])}
     ></div>

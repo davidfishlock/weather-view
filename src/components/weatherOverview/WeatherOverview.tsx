@@ -49,7 +49,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
     <div className="grid grid-cols-5 md:gap-4">
       {!!weatherData.current && (
         <CurrentWeather
-          className="col-span-5 md:col-span-2"
+          className="col-span-5 md:col-span-2 border-0 md:border"
           location={location}
           weather={weatherData.current}
           timezoneOffset={weatherData.timezoneOffset}

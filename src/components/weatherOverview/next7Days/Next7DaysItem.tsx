@@ -19,7 +19,7 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
       key={forecast.dt}
       className="mr-2 flex flex-col items-center"
     >
-      <h3 className="font-semibold">
+      <h3 className="strong-text">
         {isToday
           ? strings.NEXT_7_DAYS_TODAY
           : formatDate(forecast.dt + timezoneOffset, shortDateFormat)}

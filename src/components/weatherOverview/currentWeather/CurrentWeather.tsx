@@ -37,11 +37,11 @@ const CurrentWeather: React.FC<Props> = ({
 
   return (
     <section className={classNames(['card', className])}>
-      <h3 className="text-2xl font-semibold">{getFullLocationName(location)}</h3>
-      <p className="text-sm text-gray-500">{formatDate(weather.dt + timezoneOffset)}</p>
+      <h3 className="text-xl strong-text">{getFullLocationName(location)}</h3>
+      <p className="text-sm secondary-text">{formatDate(weather.dt + timezoneOffset)}</p>
       {areAlertsAvailable && (
         <button className="button-alert mt-2" type="button" onClick={onShowAlerts}>
-          <FiAlertTriangle className="icon-white h-6 w-6 mr-2" /> {strings.CURRENT_WEATHER_ALERTS}
+          <FiAlertTriangle className="h-6 w-6 mr-2" /> {strings.CURRENT_WEATHER_ALERTS}
         </button>
       )}
 
@@ -50,8 +50,8 @@ const CurrentWeather: React.FC<Props> = ({
           <div className="-ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
         </IconContext.Provider>
         <div>
-          <h4 className="text-2xl capitalize">{weatherSummary.description}</h4>
-          <p className="text-xl">{formatTemperature(weather.temp)}</p>
+          <h4 className="text-xl capitalize">{weatherSummary.description}</h4>
+          <p className="text-lg">{formatTemperature(weather.temp)}</p>
           {!!(Math.abs(weather.temp - weather.feelsLike) > 1) && (
             <p className="text-sm">
               ({strings.CURRENT_WEATHER_FEELS_LIKE} {formatTemperature(weather.feelsLike)})
@@ -61,15 +61,15 @@ const CurrentWeather: React.FC<Props> = ({
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2">
         <p>
-          <span className="font-semibold">{strings.CURRENT_WEATHER_HUMIDITY}</span>{' '}
+          <span className="strong-text">{strings.CURRENT_WEATHER_HUMIDITY}</span>{' '}
           {formatPercentage(weather.humidity)}
         </p>
         <p>
-          <span className="font-semibold">{strings.CURRENT_WEATHER_UV}</span>{' '}
+          <span className="strong-text">{strings.CURRENT_WEATHER_UV}</span>{' '}
           {Math.round(weather.uvi)}
         </p>
         <p>
-          <span className="font-semibold">{strings.CURRENT_WEATHER_WIND}</span>
+          <span className="strong-text">{strings.CURRENT_WEATHER_WIND}</span>
           <WiWindDeg
             className="h-6 w-6 ml-1 mb-0.5 inline"
             style={{ transform: `rotate(${weather.windDeg - 180}deg)` }}
@@ -77,7 +77,7 @@ const CurrentWeather: React.FC<Props> = ({
           {formatWindSpeed(weather.windSpeed)}
         </p>
         <p>
-          <span className="font-semibold">{strings.CURRENT_WEATHER_PRESSURE}</span>{' '}
+          <span className="strong-text">{strings.CURRENT_WEATHER_PRESSURE}</span>{' '}
           {formatPressure(weather.pressure)}
         </p>
       </div>

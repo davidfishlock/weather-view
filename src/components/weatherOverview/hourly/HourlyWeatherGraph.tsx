@@ -19,7 +19,7 @@ const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, graphMargins, class
   return (
     <div className={className}>
       <FlexibleXYPlot
-        yDomain={[graphData.temperatureRange.min, graphData.temperatureRange.max + 1]}
+        yDomain={[graphData.temperatureRange.min - 1, graphData.temperatureRange.max + 1]}
         margin={{ left: graphMargins.left, right: graphMargins.right }}
       >
         <XAxis
@@ -32,12 +32,16 @@ const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, graphMargins, class
         />
         <YAxis tickSizeInner={0} tickSizeOuter={4} tickFormat={(v) => formatTemperature(v, 1)} />
 
-        <VerticalBarSeries barWidth={0.8} data={graphData.precipitationData} color="#D7EFEC" />
-        <LineSeries curve="curveNatural" data={graphData.temperatureData} color="red" />
+        <VerticalBarSeries
+          barWidth={0.8}
+          data={graphData.precipitationData}
+          className="graph-bar"
+        />
+        <LineSeries curve="curveNatural" data={graphData.temperatureData} className="graph-line" />
         <LabelSeries
           data={graphData.precipitationData}
           labelAnchorX="middle"
-          className="text-2xs font-semibold"
+          className="graph-label"
         />
       </FlexibleXYPlot>
     </div>
