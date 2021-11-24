@@ -47,6 +47,10 @@ export const shortDateFormat = {
   day: 'numeric',
 } as const
 
+export const shortWeekdayFormat = {
+  weekday: 'short',
+} as const
+
 export const shortDateTimeFormat = {
   month: 'long',
   day: 'numeric',
@@ -65,6 +69,11 @@ export const fullDateTimeFormat = {
 export const timeFormat = {
   hour: 'numeric',
   minute: 'numeric',
+} as const
+
+export const hourFormat = {
+  hour: 'numeric',
+  hourCycle: 'h12',
 } as const
 
 export function formatDate(

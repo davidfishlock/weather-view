@@ -73,7 +73,7 @@ const LocationSelector: React.FC = () => {
           aria-label={strings.CURRENT_LOCATION_BUTTON}
           onClick={() => setSelectedLocation(userLocation)}
         >
-          <BiCurrentLocation className="icon-gray h-6 w-6" />
+          <BiCurrentLocation className="h-6 w-6 text-white" />
         </button>
       )}
       <div className="relative w-60">
@@ -94,14 +94,14 @@ const LocationSelector: React.FC = () => {
               onClick={clear}
               aria-label={strings.LOCATION_SEARCH_CLEAR}
             >
-              <FiX className="icon-gray h-4 w-4" />
+              <FiX className="h-4 w-4" />
             </button>
           )}
         </div>
 
         <ul
           className={classNames(
-            'absolute border p-2 border-t-0 -mt-1 pt-3 rounded-b-md w-full bg-white',
+            'default-background bg-opacity-90 default-border absolute border p-2 border-t-0 -mt-1 pt-3 rounded-b-md w-full',
             { hidden: suggestions.length === 0 && !error },
           )}
         >
@@ -110,7 +110,7 @@ const LocationSelector: React.FC = () => {
             <li key={`${location.name}${location.lat}${location.lon}`}>
               <button
                 type="button"
-                className="hover:underline py-1"
+                className="hover:underline py-1 w-full text-left"
                 onClick={() => onLocationClicked(location)}
               >
                 {getFullLocationName(location)}

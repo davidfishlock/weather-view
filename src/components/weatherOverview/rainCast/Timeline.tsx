@@ -41,7 +41,17 @@ const getBarColor = (millimetres: number) => {
 }
 
 const Timeline: React.FC<Props> = ({ forecast, timezoneOffset, className }) => (
-  <div className={classNames(['bg-white', 'p-2', 'rounded-lg', 'bg-opacity-80', className])}>
+  <div
+    className={classNames([
+      'bg-white',
+      'text-gray-900',
+      'p-2',
+      'rounded-lg',
+      'bg-opacity-80',
+      'font-normal',
+      className,
+    ])}
+  >
     <p className="text-xs mb-1">{getRainStatus(forecast)}</p>
     <div className="text-xs flex flex-row justify-between mb-1">
       <span>{strings.TIME_NOW}</span>

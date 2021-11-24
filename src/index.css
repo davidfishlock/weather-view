@@ -2,43 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap');
+
+@layer base {
+    body {
+        @apply default-background default-text font-light
+    }
+}
 
 @layer components {
+    .default-background {
+        @apply bg-white dark:bg-gray-800
+    }
+
+    .default-text {
+        @apply text-gray-900 dark:text-gray-100
+    }
+
+    .default-border {
+        @apply border-gray-300 dark:border-gray-600
+    }
+
+    .secondary-text {
+        @apply text-gray-900 dark:text-gray-100
+    }
+
+    .white-text {
+        @apply text-gray-50
+    }
+
+    .strong-text {
+        @apply font-medium
+    }
+
     .error {
         @apply text-red-700
     }
 
     .inline-message {
-        @apply text-lg text-center
+        @apply text-lg text-center m-4
     }
 
     .card {
-        @apply border-gray-300 border-t p-4 md:shadow-md md:border md:rounded-2xl;
+        @apply default-border border-t p-4 md:shadow-md md:border md:rounded-2xl;
     }
 
     .button {
-        @apply bg-blue-500 hover:bg-blue-700 text-white text-white font-semibold p-2 rounded-md flex flex-row items-center
+        @apply bg-blue-500 hover:bg-blue-700 strong-text p-2 rounded-md flex flex-row items-center
     }
 
     .button-alert {
-        @apply button bg-red-600 hover:bg-red-700
+        @apply button bg-red-600 hover:bg-red-700 text-white
     }
 
     .button-subtle {
-        @apply button bg-transparent hover:bg-gray-200
+        @apply button default-text bg-transparent hover:bg-gray-400 hover:bg-opacity-50
     }
 
     .input-text {
-        @apply border border-gray-300 rounded-md px-2 py-1
-    }
-
-    .icon-white {
-        @apply text-white
-    }
-
-    .icon-gray {
-        @apply text-gray-700
+        @apply default-text border default-border rounded-md px-2 py-1 bg-gray-50 dark:bg-opacity-40 dark:placeholder-gray-200
     }
 
     .icon-md {
@@ -55,5 +77,21 @@
 
     .timeline-tick-half {
         @apply timeline-tick h-1/2;
+    }
+
+    .graph-line {
+        @apply text-red-700;
+        stroke: currentColor !important;
+    }
+
+    .graph-bar > rect {
+        @apply text-blue-400;
+        fill: currentColor !important;
+        stroke: currentColor !important;
+    }
+
+    .graph-label > text {
+        @apply default-text text-2xs strong-text;
+        fill: currentColor !important;
     }
 }

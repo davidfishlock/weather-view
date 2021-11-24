@@ -16,7 +16,7 @@ const Hourly: React.FC<Props> = ({ forecast, graphMargins, className }) => {
       className={classNames(['flex flex-row justify-around', className])}
       style={{ marginLeft: graphMargins.left, marginRight: graphMargins.right }}
     >
-      <IconContext.Provider value={{ className: 'icon-gray h-6 w-6 sm:h-8 sm:w-8' }}>
+      <IconContext.Provider value={{ className: 'h-6 w-6 sm:h-8 sm:w-8 -mx-1' }}>
         {forecast.map((hour) => {
           const icon = getWeatherIcon(hour.weather[0].icon)
           return <div key={`icon-${hour.dt}`}>{icon ? React.createElement(icon) : null}</div>

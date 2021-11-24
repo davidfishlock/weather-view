@@ -22,9 +22,9 @@ describe('graphDataTransforms', () => {
     test('returns correct precipitation plot data', () => {
       const graphData = getHourlyGraphData(HOURLY_TEST_DATA)
       expect(graphData.precipitationData).toEqual([
-        { label: '', x: 1637233200, y: 0.01 },
-        { label: '0.61mm', x: 1637236800, y: 0.071 },
-        { label: '8.5mm', x: 1637240400, y: 0.76 },
+        { label: '', x: 1637233200, y: -0.99 },
+        { label: '0.61mm', x: 1637236800, y: -0.929 },
+        { label: '8.5mm', x: 1637240400, y: -0.14 },
       ])
     })
   })

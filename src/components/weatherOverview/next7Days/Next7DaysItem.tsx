@@ -3,7 +3,7 @@ import { DailyWeatherForecast } from 'ts-open-weather-map'
 import { strings } from '../../../constants/strings'
 import { testIds } from '../../../constants/testIds'
 import { getWeatherIcon } from '../../../utils/iconUtils'
-import { formatDate, formatTemperature, shortDateFormat } from '../../../utils/numberFormatter'
+import { formatDate, formatTemperature, shortWeekdayFormat } from '../../../utils/numberFormatter'
 
 type Props = {
   forecast: DailyWeatherForecast
@@ -19,10 +19,10 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
       key={forecast.dt}
       className="mr-2 flex flex-col items-center"
     >
-      <h3 className="font-semibold">
+      <h3 className="strong-text">
         {isToday
           ? strings.NEXT_7_DAYS_TODAY
-          : formatDate(forecast.dt + timezoneOffset, shortDateFormat)}
+          : formatDate(forecast.dt + timezoneOffset, shortWeekdayFormat)}
       </h3>
       <div className="m-2">{icon ? React.createElement(icon) : null}</div>
       <p>

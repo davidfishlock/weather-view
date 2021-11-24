@@ -5,7 +5,7 @@ module.exports = {
       safelist: ['bg-gray-300', 'bg-green-600', 'bg-yellow-300', 'bg-yellow-500', 'bg-red-600'],
     },
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   theme: {
     screens: {
       xs: '370px',

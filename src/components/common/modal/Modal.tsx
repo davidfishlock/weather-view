@@ -13,7 +13,7 @@ const Modal: React.FC<Props> = ({ title, onClose, children }) => {
 
   return (
     <div
-      className="absolute left-0 top-0 h-screen w-full bg-black bg-opacity-30 flex z-30 justify-center items-center"
+      className="absolute left-0 top-0 h-screen w-full bg-black bg-opacity-70 flex z-30 justify-center items-center"
       onClick={function (e) {
         if (e.currentTarget === e.target) onClose()
       }}
@@ -23,14 +23,14 @@ const Modal: React.FC<Props> = ({ title, onClose, children }) => {
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"
-          className="flex flex-col flex-shrink bg-white m-4 px-8 py-6 rounded-2xl"
+          className="flex flex-col flex-shrink default-background m-4 px-8 py-6 rounded-2xl"
         >
           <div className="flex flex-row justify-between items-center mb-4">
-            <h2 className="text-semibold text-2xl" id="modal-title">
+            <h2 className="strong-text text-2xl" id="modal-title">
               {title}
             </h2>
             <button
-              className="rounded-xl p-2 hover:bg-gray-200"
+              className="button-subtle p-2"
               type="button"
               onClick={onClose}
               aria-label={strings.MODAL_CLOSE}

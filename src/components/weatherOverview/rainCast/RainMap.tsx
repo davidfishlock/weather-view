@@ -19,6 +19,9 @@ const RainMap: React.FC<Props> = ({ location, className }) => (
     attributionControl={false}
     scrollWheelZoom={false}
     zoomControl={false}
+    touchZoom={false}
+    doubleClickZoom={false}
+    dragging={false}
   >
     <TileLayer url={STREET_MAP_TILES_PATH} />
     <TileLayer url={RAIN_MAP_TILES_PATH} />

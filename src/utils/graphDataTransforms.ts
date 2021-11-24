@@ -39,7 +39,8 @@ function getScaledPrecipitationPlotData(
   return forecast.map((hour) => {
     const precipitationAmount = Math.max(hour.rain?.['1h'] ?? 0, hour.snow?.['1h'] ?? 0)
     const scaledPrecipitationAmount =
-      temperatureRange.min +
+      temperatureRange.min -
+      1 +
       (precipitationAmount / MAX_HOURLY_PRECIPITATION) * temperatureRange.range
     return {
       x: hour.dt,

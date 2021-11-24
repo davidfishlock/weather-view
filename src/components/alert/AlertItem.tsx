@@ -12,8 +12,8 @@ type Props = {
 const AlertItem: React.FC<Props> = ({ alert }) => (
   <div className="mb-4">
     <div className="flex flex-row items-center mb-2">
-      <FiAlertTriangle className="icon-gray icon-sm flex-grow-0 mr-2" />
-      <h3 className="text-lg font-semibold">{alert.event}</h3>
+      <FiAlertTriangle className="icon-sm flex-grow-0 mr-2" />
+      <h3 className="text-lg strong-text">{alert.event}</h3>
     </div>
     <p className="text-sm mt-2">
       {strings.ALERT_VALID_FROM} {formatDate(alert.start, shortDateTimeFormat)} -{' '}

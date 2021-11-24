@@ -6,6 +6,8 @@ type LocationState = {
   setUserLocation: (location: Location) => void
   selectedLocation?: Location
   setSelectedLocation: (location: Location) => void
+  locationFetchCompleted: boolean
+  setLocationFetchCompleted: (isCompleted: boolean) => void
 }
 
 export const LocationContext = createContext<LocationState | undefined>(undefined)
@@ -13,8 +15,16 @@ export const LocationContext = createContext<LocationState | undefined>(undefine
 export const LocationProvider: React.FC = ({ children }) => {
   const [userLocation, setUserLocation] = useState<Location>()
   const [selectedLocation, setSelectedLocation] = useState<Location>()
+  const [locationFetchCompleted, setLocationFetchCompleted] = useState(false)
 
-  const value = { userLocation, setUserLocation, selectedLocation, setSelectedLocation }
+  const value = {
+    userLocation,
+    setUserLocation,
+    selectedLocation,
+    setSelectedLocation,
+    locationFetchCompleted,
+    setLocationFetchCompleted,
+  }
 
   return <LocationContext.Provider value={value}>{children}</LocationContext.Provider>
 }

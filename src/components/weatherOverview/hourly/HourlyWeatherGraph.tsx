@@ -4,7 +4,7 @@ import 'react-vis/dist/style.css'
 import { HourlyWeatherForecast } from 'ts-open-weather-map'
 import { strings } from '../../../constants/strings'
 import { getHourlyGraphData } from '../../../utils/graphDataTransforms'
-import { formatDate, formatTemperature, timeFormat } from '../../../utils/numberFormatter'
+import { formatDate, formatTemperature, hourFormat } from '../../../utils/numberFormatter'
 
 type Props = {
   forecast: HourlyWeatherForecast[]
@@ -19,7 +19,7 @@ const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, graphMargins, class
   return (
     <div className={className}>
       <FlexibleXYPlot
-        yDomain={[graphData.temperatureRange.min, graphData.temperatureRange.max + 1]}
+        yDomain={[graphData.temperatureRange.min - 1, graphData.temperatureRange.max + 1]}
         margin={{ left: graphMargins.left, right: graphMargins.right }}
       >
         <XAxis
@@ -27,17 +27,23 @@ const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, graphMargins, class
           tickSizeOuter={0}
           tickValues={forecast.map((hour) => hour.dt)}
           tickFormat={(v) =>
-            v === forecast[0].dt ? strings.TIME_NOW : formatDate(v + timezoneOffset, timeFormat)
+            v === forecast[0].dt
+              ? strings.TIME_NOW
+              : formatDate(v + timezoneOffset, hourFormat).replace(/\s/g, '')
           }
         />
         <YAxis tickSizeInner={0} tickSizeOuter={4} tickFormat={(v) => formatTemperature(v, 1)} />
 
-        <VerticalBarSeries barWidth={0.8} data={graphData.precipitationData} color="#D7EFEC" />
-        <LineSeries curve="curveNatural" data={graphData.temperatureData} color="red" />
+        <VerticalBarSeries
+          barWidth={0.8}
+          data={graphData.precipitationData}
+          className="graph-bar"
+        />
+        <LineSeries curve="curveNatural" data={graphData.temperatureData} className="graph-line" />
         <LabelSeries
           data={graphData.precipitationData}
           labelAnchorX="middle"
-          className="text-2xs font-semibold"
+          className="graph-label"
         />
       </FlexibleXYPlot>
     </div>

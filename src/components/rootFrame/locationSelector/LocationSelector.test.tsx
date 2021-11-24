@@ -41,6 +41,8 @@ function setupLocationContext(userLocation?: Location) {
     setSelectedLocation: mockSetLocation,
     setUserLocation: jest.fn(),
     selectedLocation: undefined,
+    locationFetchCompleted: false,
+    setLocationFetchCompleted: jest.fn(),
   })
 }
 
