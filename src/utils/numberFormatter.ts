@@ -25,6 +25,16 @@ export function formatPercentage(input: number): string {
   }).format(input)
 }
 
+export function formatPrecipitation(input: number): string {
+  return Intl.NumberFormat(window.navigator.language, {
+    style: 'unit',
+    unit: 'millimeter',
+    maximumFractionDigits: 1,
+  })
+    .format(input)
+    .replace(/\s/g, '')
+}
+
 export function formatWindSpeed(speed: number): string {
   const locale = window.navigator.language
   const isImperial = isImperialLocale(locale)

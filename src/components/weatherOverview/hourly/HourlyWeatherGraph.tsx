@@ -1,10 +1,20 @@
-import React, { useMemo } from 'react'
-import { FlexibleXYPlot, LabelSeries, LineSeries, VerticalBarSeries, XAxis, YAxis } from 'react-vis'
+import React, { useMemo, useState } from 'react'
+import {
+  FlexibleXYPlot,
+  Hint,
+  LabelSeries,
+  LineSeries,
+  LineSeriesPoint,
+  VerticalBarSeries,
+  XAxis,
+  YAxis,
+} from 'react-vis'
 import 'react-vis/dist/style.css'
 import { HourlyWeatherForecast } from 'ts-open-weather-map'
 import { strings } from '../../../constants/strings'
 import { getHourlyGraphData } from '../../../utils/graphDataTransforms'
 import { formatDate, formatTemperature, hourFormat } from '../../../utils/numberFormatter'
+import HourlyGraphOverlay from './HourlyGraphOverlay'
 
 type Props = {
   forecast: HourlyWeatherForecast[]
@@ -14,17 +24,21 @@ type Props = {
 }
 
 const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, graphMargins, className }) => {
+  const [activePoint, setActivePoint] = useState<LineSeriesPoint>()
   const graphData = useMemo(() => getHourlyGraphData(forecast), [forecast])
+  const activeForecast = forecast.find((hour) => hour.dt === activePoint?.x)
 
   return (
     <div className={className}>
       <FlexibleXYPlot
+        onMouseLeave={() => setActivePoint(undefined)}
         yDomain={[graphData.temperatureRange.min - 1, graphData.temperatureRange.max + 1]}
         margin={{ left: graphMargins.left, right: graphMargins.right }}
       >
         <XAxis
           tickSizeInner={0}
           tickSizeOuter={0}
+          className="strong-text"
           tickValues={forecast.map((hour) => hour.dt)}
           tickFormat={(v) =>
             v === forecast[0].dt
@@ -32,19 +46,37 @@ const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, graphMargins, class
               : formatDate(v + timezoneOffset, hourFormat).replace(/\s/g, '')
           }
         />
-        <YAxis tickSizeInner={0} tickSizeOuter={4} tickFormat={(v) => formatTemperature(v, 1)} />
+        <YAxis
+          className="strong-text"
+          tickSizeInner={0}
+          tickSizeOuter={4}
+          tickFormat={(v) => formatTemperature(v, 1)}
+        />
 
         <VerticalBarSeries
           barWidth={0.8}
           data={graphData.precipitationData}
           className="graph-bar"
         />
-        <LineSeries curve="curveNatural" data={graphData.temperatureData} className="graph-line" />
+        <LineSeries
+          onNearestX={setActivePoint}
+          curve="curveNatural"
+          data={graphData.temperatureData}
+          className="graph-line"
+        />
         <LabelSeries
           data={graphData.precipitationData}
           labelAnchorX="middle"
           className="graph-label"
         />
+        {!!activeForecast && (
+          <Hint value={activePoint} align={{ vertical: 'bottom', horizontal: 'right' }}>
+            <HourlyGraphOverlay
+              className="transform -translate-x-1/2 translate-y-2"
+              forecast={activeForecast}
+            />
+          </Hint>
+        )}
       </FlexibleXYPlot>
     </div>
   )

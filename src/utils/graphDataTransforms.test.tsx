@@ -23,7 +23,7 @@ describe('graphDataTransforms', () => {
       const graphData = getHourlyGraphData(HOURLY_TEST_DATA)
       expect(graphData.precipitationData).toEqual([
         { label: '', x: 1637233200, y: -0.99 },
-        { label: '0.61mm', x: 1637236800, y: -0.929 },
+        { label: '1.1mm', x: 1637236800, y: -0.878 },
         { label: '8.5mm', x: 1637240400, y: -0.14 },
       ])
     })

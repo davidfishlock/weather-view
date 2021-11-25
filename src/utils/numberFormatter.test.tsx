@@ -1,6 +1,7 @@
 import {
   formatDate,
   formatPercentage,
+  formatPrecipitation,
   formatPressure,
   formatTemperature,
   formatWindSpeed,
@@ -38,6 +39,25 @@ describe('numberFormatter', () => {
         jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatTemperature(value)
+        expect(formattedValue).toEqual(expected)
+      },
+    )
+  })
+
+  describe('formatPrecipitation', () => {
+    const temperatureTheories = [
+      ['en-GB', 1000.2, '1,000.2mm'],
+      ['en-US', 1000.2, '1,000.2mm'],
+      ['fr-FR', 1000.2, '1000,2mm'],
+      ['de-DE', 1000.2, '1.000,2mm'],
+    ] as const
+
+    test.each(temperatureTheories)(
+      'locale %p and value %p returns %p',
+      (locale, value, expected) => {
+        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+
+        const formattedValue = formatPrecipitation(value)
         expect(formattedValue).toEqual(expected)
       },
     )
