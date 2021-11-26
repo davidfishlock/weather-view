@@ -37,20 +37,28 @@ const CurrentWeather: React.FC<Props> = ({
 
   return (
     <section className={classNames(['card', className])}>
-      <h2 className="text-xl strong-text">{getFullLocationName(location)}</h2>
-      <p className="text-sm secondary-text">{formatDate(weather.dt + timezoneOffset)}</p>
-      {areAlertsAvailable && (
-        <button className="button-alert mt-2" type="button" onClick={onShowAlerts}>
-          <FiAlertTriangle className="h-6 w-6 mr-2" /> {strings.CURRENT_WEATHER_ALERTS}
-        </button>
-      )}
-
+      <div className="flex flex-row flex-wrap gap-2 justify-between items-center">
+        <div>
+          <h2 className="text-xl strong-text">{getFullLocationName(location)}</h2>
+          <p className="text-sm secondary-text">{formatDate(weather.dt + timezoneOffset)}</p>
+        </div>
+        {areAlertsAvailable && (
+          <button
+            aria-label={strings.CURRENT_WEATHER_ALERTS}
+            className="button-alert"
+            type="button"
+            onClick={onShowAlerts}
+          >
+            <FiAlertTriangle className="h-6 w-6" />
+          </button>
+        )}
+      </div>
       <div className="flex flex-row items-center">
         <IconContext.Provider value={{ className: 'icon-gray icon-lg' }}>
           <div className="-ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
         </IconContext.Provider>
         <div>
-          <h3 className="text-xl capitalize">{weatherSummary.description}</h3>
+          <h3 className="text-lg capitalize">{weatherSummary.description}</h3>
           <p className="text-lg">{formatTemperature(weather.temp)}</p>
           {!!(Math.abs(weather.temp - weather.feelsLike) > 1) && (
             <p className="text-sm">

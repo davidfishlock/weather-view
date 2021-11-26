@@ -2,7 +2,7 @@
 
 A simple weather application built using my [ts-open-weather-map]() library with data provided by the [Open Weather Map API](https://openweathermap.org/).
 
-The live version is available at: https://weather-view.vercel.app
+The live version is available at: https://weather.davidfishlock.com
 
 ## Setup
 

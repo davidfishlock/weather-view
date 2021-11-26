@@ -16,7 +16,7 @@ const Hourly: React.FC<Props> = ({ forecast, timezoneOffset, className }) => {
   return (
     <section className={classNames(['card', 'relative', 'p-0', 'overflow-hidden', className])}>
       <HourlyWeatherIcons
-        className="-mb-8 mt-2"
+        className="-mb-9 mt-3"
         forecast={trimmedForecast}
         graphMargins={graphMargins}
       />

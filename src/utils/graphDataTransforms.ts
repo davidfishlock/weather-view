@@ -1,4 +1,5 @@
 import { HourlyWeatherForecast } from 'ts-open-weather-map'
+import { formatPrecipitation } from './numberFormatter'
 
 // Anything above 7.5mm/h is normalize to 100% height on the graph
 // This avoids more common low-ranged values from appearing very short
@@ -37,15 +38,15 @@ function getScaledPrecipitationPlotData(
   forecast: HourlyWeatherForecast[],
 ): LabelledPlotData[] {
   return forecast.map((hour) => {
-    const precipitationAmount = Math.max(hour.rain?.['1h'] ?? 0, hour.snow?.['1h'] ?? 0)
+    const totalPrecipitation = (hour.rain?.['1h'] ?? 0) + (hour.snow?.['1h'] ?? 0)
     const scaledPrecipitationAmount =
       temperatureRange.min -
       1 +
-      (precipitationAmount / MAX_HOURLY_PRECIPITATION) * temperatureRange.range
+      (totalPrecipitation / MAX_HOURLY_PRECIPITATION) * temperatureRange.range
     return {
       x: hour.dt,
       y: Math.min(scaledPrecipitationAmount, temperatureRange.max),
-      label: precipitationAmount ? precipitationAmount + 'mm' : '',
+      label: totalPrecipitation ? formatPrecipitation(totalPrecipitation) : '',
     }
   })
 }

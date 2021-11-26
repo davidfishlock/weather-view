@@ -291,16 +291,10 @@ export const DEFAULT_ONECALL_RESPONSE = {
       windGust: 15.26,
       weather: [
         {
-          id: 500,
-          main: 'Rain',
-          description: 'light rain',
-          icon: '10n',
-        },
-        {
-          id: 511,
-          main: 'Rain',
-          description: 'freezing rain',
-          icon: '13n',
+          id: 804,
+          main: 'Clouds',
+          description: 'overcast clouds',
+          icon: '04d',
         },
       ],
       pop: 0,
@@ -320,15 +314,18 @@ export const DEFAULT_ONECALL_RESPONSE = {
       windGust: 16.25,
       weather: [
         {
-          id: 500,
-          main: 'Rain',
-          description: 'light rain',
-          icon: '10d',
+          id: 616,
+          main: 'Snow',
+          description: 'rain and snow',
+          icon: '13d',
         },
       ],
       pop: 1,
       rain: {
         '1h': 0.61,
+      },
+      snow: {
+        '1h': 0.51,
       },
     },
     {

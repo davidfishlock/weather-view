@@ -46,10 +46,10 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
     return <p className="error inline-message">{strings.DATA_LOAD_ERROR}</p>
 
   return (
-    <div className="grid grid-cols-5 md:gap-4">
+    <div className="grid grid-cols-7 md:gap-4">
       {!!weatherData.current && (
         <CurrentWeather
-          className="col-span-5 md:col-span-2 border-0 md:border"
+          className="col-span-7 md:col-span-3 border-0 md:border"
           location={location}
           weather={weatherData.current}
           timezoneOffset={weatherData.timezoneOffset}
@@ -59,7 +59,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
       )}
       {!!weatherData.minutely && (
         <Raincast
-          className="col-span-5 md:col-span-3 h-60 md:h-auto"
+          className="col-span-7 md:col-span-4 h-60 md:h-auto"
           location={location}
           forecast={weatherData.minutely}
           timezoneOffset={weatherData.timezoneOffset}
@@ -67,14 +67,14 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
       )}
       {!!weatherData.hourly && (
         <Hourly
-          className="col-span-5"
+          className="col-span-7"
           forecast={weatherData.hourly}
           timezoneOffset={weatherData.timezoneOffset}
         />
       )}
       {!!weatherData.daily && (
         <Next7Days
-          className="col-span-5"
+          className="col-span-7"
           forecast={weatherData.daily}
           timezoneOffset={weatherData.timezoneOffset}
         />

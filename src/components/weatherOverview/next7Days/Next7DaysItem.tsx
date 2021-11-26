@@ -17,7 +17,7 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
     <div
       data-testid={testIds.NEXT_7_DAYS_ITEM}
       key={forecast.dt}
-      className="mr-2 flex flex-col items-center"
+      className="flex flex-col items-center text-center"
     >
       <h3 className="strong-text">
         {isToday
@@ -25,10 +25,10 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
           : formatDate(forecast.dt + timezoneOffset, shortWeekdayFormat)}
       </h3>
       <div className="m-2">{icon ? React.createElement(icon) : null}</div>
-      <p>
+      <p className="text-sm">
         {formatTemperature(forecast.temp.max)} / {formatTemperature(forecast.temp.min)}
       </p>
-      <p className="text-center text-sm capitalize">{forecast.weather[0].description}</p>
+      <p className="text-sm capitalize">{forecast.weather[0].description}</p>
     </div>
   )
 }
