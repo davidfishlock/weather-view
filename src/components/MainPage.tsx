@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { strings } from '../constants/strings'
 import { useLocationContext } from '../contexts/Location'
 import Spinner from './common/spinner/Spinner'
+import WeatherNews from './news/WeatherNews'
 import WeatherOverview from './weatherOverview/WeatherOverview'
 
 const MainPage: React.FC = () => {
@@ -42,7 +43,12 @@ const MainPage: React.FC = () => {
 
   if (!selectedLocation) return <p className="inline-message">{strings.SELECT_LOCATION}</p>
 
-  return <WeatherOverview location={selectedLocation} />
+  return (
+    <>
+      <WeatherOverview location={selectedLocation} />
+      <WeatherNews location={selectedLocation} className="md:mt-4" />
+    </>
+  )
 }
 
 export default MainPage

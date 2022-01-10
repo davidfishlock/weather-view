@@ -1,3 +1,5 @@
+import { NewsArticle } from '@azure/cognitiveservices-newssearch/esm/models'
+
 export const DEFAULT_ONECALL_RESPONSE = {
   lat: 46.7723,
   lon: -67.8339,
@@ -1903,3 +1905,32 @@ export const DEFAULT_GEOCODING_RESPONSE = [
     state: 'TN',
   },
 ]
+
+export const DEFAULT_NEWS_ARTICLE: NewsArticle = {
+  _type: 'NewsArticle',
+  name: 'Article Title',
+  description: 'A longer description of the news article',
+  url: 'https://provider.com/article.html',
+  image: {
+    _type: 'ImageObject',
+    thumbnail: {
+      _type: 'ImageObject',
+      contentUrl: 'https://provider.com/articleimage.jpg',
+      width: 100,
+      height: 100,
+    },
+  },
+  provider: [
+    {
+      _type: 'Organization',
+      name: 'A News Provider',
+      image: {
+        _type: 'ImageObject',
+        thumbnail: {
+          _type: 'ImageObject',
+          contentUrl: 'https://provider.com/providerimage.jpg',
+        },
+      },
+    },
+  ],
+}

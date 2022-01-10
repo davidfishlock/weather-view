@@ -1,5 +1,7 @@
 import '@testing-library/jest-dom/extend-expect'
 
+process.env.REACT_APP_NEWS_API_KEY = '12345'
+
 const mockGeolocation = {
   getCurrentPosition: jest.fn(),
   watchPosition: jest.fn(),

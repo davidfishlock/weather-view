@@ -77,7 +77,7 @@ describe('CurrentWeather', () => {
   test('clicking alerts button opens alerts', () => {
     renderTarget()
 
-    userEvent.click(screen.getByText(strings.CURRENT_WEATHER_ALERTS))
+    userEvent.click(screen.getByLabelText(strings.CURRENT_WEATHER_ALERTS))
     expect(showAlertsMock).toBeCalledTimes(1)
   })
 })
