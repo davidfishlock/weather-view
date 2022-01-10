@@ -24,4 +24,6 @@ export const strings = {
   LOADING: 'Loading',
   DATA_LOAD_ERROR:
     'There was an error loading weather for this location. Please check your connection and refresh the page.',
+  WEATHER_NEWS: 'Weather News',
+  WEATHER_NEWS_PROVIDER_PREFIX: 'From: ',
 }

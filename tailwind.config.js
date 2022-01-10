@@ -40,7 +40,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ['first', 'last'],
+    },
   },
   plugins: [],
 }
