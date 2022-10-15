@@ -29,7 +29,7 @@ describe('CurrentWeather', () => {
 
   test('displays date', () => {
     renderTarget()
-    expect(screen.getByText('18 November 2021, 06:16')).toBeInTheDocument()
+    expect(screen.getByText('18 November 2021 at 06:16')).toBeInTheDocument()
   })
 
   test('displays weather description', () => {

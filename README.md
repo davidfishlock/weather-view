@@ -1,6 +1,6 @@
 # weather-view
 
-A simple weather application built using my [ts-open-weather-map]() library with data provided by the [Open Weather Map API](https://openweathermap.org/).
+A simple weather application built using my [ts-open-weather-map]() library with data provided by the [Open Weather Map API](https://openweathermap.org/) and [Bing News Search API](https://www.microsoft.com/en-us/bing/apis/bing-news-search-api).
 
 The live version is available at: https://weather.davidfishlock.com
 
