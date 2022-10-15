@@ -25,7 +25,7 @@ describe('Alert', () => {
   test('displays alert duration', () => {
     renderTarget()
     expect(
-      screen.getByText(`${strings.ALERT_VALID_FROM} 18 November, 10:57 - 18 November, 14:00`),
+      screen.getByText(`${strings.ALERT_VALID_FROM} 18 November at 10:57 - 18 November at 14:00`),
     ).toBeInTheDocument()
   })
 

@@ -127,10 +127,10 @@ describe('numberFormatter', () => {
     )
 
     const shortDateTimeTheories = [
-      ['en-GB', 1637584109, '22 November, 12:28'],
-      ['en-US', 1637584109, 'November 22, 12:28 PM'],
-      ['fr-FR', 1637584109, '22 novembre, 12:28'],
-      ['de-DE', 1637584109, '22. November, 12:28'],
+      ['en-GB', 1637584109, '22 November at 12:28'],
+      ['en-US', 1637584109, 'November 22 at 12:28 PM'],
+      ['fr-FR', 1637584109, '22 novembre à 12:28'],
+      ['de-DE', 1637584109, '22. November um 12:28'],
     ] as const
 
     test.each(shortDateTimeTheories)(
@@ -144,10 +144,10 @@ describe('numberFormatter', () => {
     )
 
     const fullDateTimeTheories = [
-      ['en-GB', 1637584109, '22 November 2021, 12:28'],
-      ['en-US', 1637584109, 'November 22, 2021, 12:28 PM'],
-      ['fr-FR', 1637584109, '22 novembre 2021, 12:28'],
-      ['de-DE', 1637584109, '22. November 2021, 12:28'],
+      ['en-GB', 1637584109, '22 November 2021 at 12:28'],
+      ['en-US', 1637584109, 'November 22, 2021 at 12:28 PM'],
+      ['fr-FR', 1637584109, '22 novembre 2021 à 12:28'],
+      ['de-DE', 1637584109, '22. November 2021 um 12:28'],
     ] as const
 
     test.each(fullDateTimeTheories)(
