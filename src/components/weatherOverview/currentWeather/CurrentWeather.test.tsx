@@ -74,10 +74,10 @@ describe('CurrentWeather', () => {
     expect(within(pressureElement).getByText('1017hPa')).toBeInTheDocument()
   })
 
-  test('clicking alerts button opens alerts', () => {
+  test('clicking alerts button opens alerts', async () => {
     renderTarget()
 
-    userEvent.click(screen.getByLabelText(strings.CURRENT_WEATHER_ALERTS))
+    await userEvent.click(screen.getByLabelText(strings.CURRENT_WEATHER_ALERTS))
     expect(showAlertsMock).toBeCalledTimes(1)
   })
 })

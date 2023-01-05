@@ -27,9 +27,9 @@ describe('CurrentWeather', () => {
     expect(screen.getByText(content)).toBeInTheDocument()
   })
 
-  test('clicking close button closes Modal', () => {
+  test('clicking close button closes Modal', async () => {
     renderTarget()
-    userEvent.click(screen.getByLabelText(strings.MODAL_CLOSE))
+    await userEvent.click(screen.getByLabelText(strings.MODAL_CLOSE))
     expect(onCloseMock).toBeCalledTimes(1)
   })
 })
