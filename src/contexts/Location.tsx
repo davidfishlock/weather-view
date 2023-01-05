@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, ReactNode, useState } from 'react'
 import { Location } from '../types/location'
 
 type LocationState = {
@@ -12,7 +12,11 @@ type LocationState = {
 
 export const LocationContext = createContext<LocationState | undefined>(undefined)
 
-export const LocationProvider: React.FC = ({ children }) => {
+type LocationProviderProps = {
+  children: ReactNode
+}
+
+export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) => {
   const [userLocation, setUserLocation] = useState<Location>()
   const [selectedLocation, setSelectedLocation] = useState<Location>()
   const [locationFetchCompleted, setLocationFetchCompleted] = useState(false)

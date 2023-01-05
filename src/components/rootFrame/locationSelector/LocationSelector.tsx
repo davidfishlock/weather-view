@@ -43,7 +43,7 @@ const LocationSelector: React.FC = () => {
     'Escape',
     clear,
     {
-      enableOnTags: ['INPUT'],
+      enableOnFormTags: ['INPUT'],
     },
     [clear],
   )

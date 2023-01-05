@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Header from './Header'
 
-const RootFrame: React.FC = ({ children }) => (
+type Props = {
+  children: ReactNode
+}
+
+const RootFrame: React.FC<Props> = ({ children }) => (
   <div className="flex flex-col items-center">
     <Header />
 
