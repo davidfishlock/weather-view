@@ -9,7 +9,7 @@ The live version is available at: https://weather.davidfishlock.com
 To run the application locally, clone the repository and run:
 
 ```
-npm install
+npm ci
 npm run start
 ```
 
