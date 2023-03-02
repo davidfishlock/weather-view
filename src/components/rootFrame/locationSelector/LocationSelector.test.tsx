@@ -73,7 +73,7 @@ describe('LocationSelector', () => {
 
   test('calls api with typed query and debounces to minimize requests', async () => {
     renderTarget()
-    await userEvent.type(screen.getByLabelText(strings.LOCATION_SEARCH), DEFAULT_SEARCH_QUERY)
+    await userEvent.type(screen.getByLabelText(strings.CITY_SEARCH), DEFAULT_SEARCH_QUERY)
 
     await waitFor(() => expect(mockGeoCoding).toHaveBeenCalledTimes(1))
     expect(mockGeoCoding).toBeCalledWith(DEFAULT_SEARCH_QUERY, 5)
@@ -81,7 +81,7 @@ describe('LocationSelector', () => {
 
   test('shows item for each result', async () => {
     const { rerender } = renderTarget()
-    await userEvent.type(screen.getByLabelText(strings.LOCATION_SEARCH), DEFAULT_SEARCH_QUERY)
+    await userEvent.type(screen.getByLabelText(strings.CITY_SEARCH), DEFAULT_SEARCH_QUERY)
     await waitFor(() => expect(mockGeoCoding).toHaveBeenCalledTimes(1))
     rerender(<LocationSelector />)
 
@@ -91,7 +91,7 @@ describe('LocationSelector', () => {
 
   test('sets location on item click', async () => {
     const { rerender } = renderTarget()
-    await userEvent.type(screen.getByLabelText(strings.LOCATION_SEARCH), DEFAULT_SEARCH_QUERY)
+    await userEvent.type(screen.getByLabelText(strings.CITY_SEARCH), DEFAULT_SEARCH_QUERY)
     await waitFor(() => expect(mockGeoCoding).toHaveBeenCalledTimes(1))
     rerender(<LocationSelector />)
     await userEvent.click(screen.getByText(DEFAULT_CITIES_RESPONSE[0].name))
@@ -102,31 +102,31 @@ describe('LocationSelector', () => {
 
   test('escape key clears input', async () => {
     const { rerender } = renderTarget()
-    await userEvent.type(screen.getByLabelText(strings.LOCATION_SEARCH), DEFAULT_SEARCH_QUERY)
+    await userEvent.type(screen.getByLabelText(strings.CITY_SEARCH), DEFAULT_SEARCH_QUERY)
     rerender(<LocationSelector />)
 
-    expect(screen.getByLabelText(strings.LOCATION_SEARCH)).toHaveValue(DEFAULT_SEARCH_QUERY)
+    expect(screen.getByLabelText(strings.CITY_SEARCH)).toHaveValue(DEFAULT_SEARCH_QUERY)
 
     await act(async () => {
-      await userEvent.type(screen.getByLabelText(strings.LOCATION_SEARCH), '{esc}')
+      await userEvent.type(screen.getByLabelText(strings.CITY_SEARCH), '{esc}')
       rerender(<LocationSelector />)
     })
 
-    expect(screen.getByLabelText(strings.LOCATION_SEARCH)).toHaveValue('')
+    expect(screen.getByLabelText(strings.CITY_SEARCH)).toHaveValue('')
   })
 
   test('clear button clears input', async () => {
     const { rerender } = renderTarget()
-    await userEvent.type(screen.getByLabelText(strings.LOCATION_SEARCH), DEFAULT_SEARCH_QUERY)
+    await userEvent.type(screen.getByLabelText(strings.CITY_SEARCH), DEFAULT_SEARCH_QUERY)
     rerender(<LocationSelector />)
 
-    expect(screen.getByLabelText(strings.LOCATION_SEARCH)).toHaveValue(DEFAULT_SEARCH_QUERY)
+    expect(screen.getByLabelText(strings.CITY_SEARCH)).toHaveValue(DEFAULT_SEARCH_QUERY)
 
     await act(async () => {
-      await userEvent.click(screen.getByLabelText(strings.LOCATION_SEARCH_CLEAR))
+      await userEvent.click(screen.getByLabelText(strings.CITY_SEARCH_CLEAR))
       rerender(<LocationSelector />)
     })
 
-    expect(screen.getByLabelText(strings.LOCATION_SEARCH)).toHaveValue('')
+    expect(screen.getByLabelText(strings.CITY_SEARCH)).toHaveValue('')
   })
 })

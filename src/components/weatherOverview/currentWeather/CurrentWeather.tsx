@@ -36,10 +36,13 @@ const CurrentWeather: React.FC<Props> = ({
   const icon = getWeatherIcon(weatherSummary.icon)
 
   return (
-    <section className={classNames(['card', className])}>
+    <section aria-labelledby="currentHeader" className={classNames(['card', className])}>
+      <h2 id="currentHeader" className="sr-only">
+        {strings.CURRENT_WEATHER}
+      </h2>
       <div className="flex flex-row flex-wrap gap-2 justify-between items-center">
         <div>
-          <h2 className="text-xl strong-text">{getFullLocationName(location)}</h2>
+          <p className="text-xl strong-text">{getFullLocationName(location)}</p>
           <p className="text-sm secondary-text">{formatDate(weather.dt + timezoneOffset)}</p>
         </div>
         {areAlertsAvailable && (
@@ -58,7 +61,7 @@ const CurrentWeather: React.FC<Props> = ({
           <div className="-ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
         </IconContext.Provider>
         <div>
-          <h3 className="text-lg capitalize">{weatherSummary.description}</h3>
+          <p className="text-lg capitalize">{weatherSummary.description}</p>
           <p className="text-lg">{formatTemperature(weather.temp)}</p>
           {!!(Math.abs(weather.temp - weather.feelsLike) > 1) && (
             <p className="text-sm">

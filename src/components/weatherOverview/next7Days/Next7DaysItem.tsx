@@ -3,7 +3,12 @@ import { DailyWeatherForecast } from 'ts-open-weather-map'
 import { strings } from '../../../constants/strings'
 import { testIds } from '../../../constants/testIds'
 import { getWeatherIcon } from '../../../utils/iconUtils'
-import { formatDate, formatTemperature, shortWeekdayFormat } from '../../../utils/numberFormatter'
+import {
+  formatDate,
+  formatTemperature,
+  longWeekdayFormat,
+  shortWeekdayFormat,
+} from '../../../utils/numberFormatter'
 
 type Props = {
   forecast: DailyWeatherForecast
@@ -14,12 +19,19 @@ type Props = {
 const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) => {
   const icon = getWeatherIcon(forecast.weather[0].icon)
   return (
-    <div
+    <li
       data-testid={testIds.NEXT_7_DAYS_ITEM}
       key={forecast.dt}
       className="flex flex-col items-center text-center"
     >
-      <h3 className="strong-text">
+      <h3
+        className="strong-text"
+        aria-label={
+          isToday
+            ? strings.NEXT_7_DAYS_TODAY
+            : formatDate(forecast.dt + timezoneOffset, longWeekdayFormat)
+        }
+      >
         {isToday
           ? strings.NEXT_7_DAYS_TODAY
           : formatDate(forecast.dt + timezoneOffset, shortWeekdayFormat)}
@@ -29,7 +41,7 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
         {formatTemperature(forecast.temp.max)} / {formatTemperature(forecast.temp.min)}
       </p>
       <p className="text-sm capitalize">{forecast.weather[0].description}</p>
-    </div>
+    </li>
   )
 }
 

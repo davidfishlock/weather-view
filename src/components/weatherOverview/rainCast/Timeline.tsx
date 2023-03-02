@@ -53,12 +53,12 @@ const Timeline: React.FC<Props> = ({ forecast, timezoneOffset, className }) => (
     ])}
   >
     <p className="text-xs mb-1">{getRainStatus(forecast)}</p>
-    <div className="text-xs flex flex-row justify-between mb-1">
+    <div aria-hidden={true} className="text-xs flex flex-row justify-between mb-1">
       <span>{strings.TIME_NOW}</span>
       <span>{formatDate(forecast[29].dt + timezoneOffset, timeFormat)}</span>
       <span>{formatDate(forecast[59].dt + timezoneOffset, timeFormat)}</span>
     </div>
-    <div className="flex flex-row h-3 mx-2 items-end gap-0.5">
+    <div aria-hidden={true} className="flex flex-row h-3 mx-2 items-end gap-0.5">
       {forecast.map((minute, index) => (
         <div
           key={minute.dt}

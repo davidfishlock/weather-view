@@ -82,8 +82,8 @@ const LocationSelector: React.FC = () => {
             className="input-text w-full"
             type="text"
             value={query}
-            aria-label={strings.LOCATION_SEARCH}
-            placeholder={strings.LOCATION_SEARCH}
+            aria-label={strings.CITY_SEARCH}
+            placeholder={strings.CITY_SEARCH}
             onChange={(e) => setQuery(e.currentTarget.value)}
           />
 
@@ -92,7 +92,7 @@ const LocationSelector: React.FC = () => {
               className="button-subtle absolute right-0 top-0 bottom-0 m-1"
               type="button"
               onClick={clear}
-              aria-label={strings.LOCATION_SEARCH_CLEAR}
+              aria-label={strings.CITY_SEARCH_CLEAR}
             >
               <FiX className="h-4 w-4" />
             </button>
@@ -105,7 +105,7 @@ const LocationSelector: React.FC = () => {
             { hidden: suggestions.length === 0 && !error },
           )}
         >
-          {!!error && <p className="error text-sm">{strings.LOCATION_SEARCH_ERROR}</p>}
+          {!!error && <p className="error text-sm">{strings.CITY_SEARCH_ERROR}</p>}
           {suggestions.map((location) => (
             <li key={`${location.name}${location.lat}${location.lon}`}>
               <button

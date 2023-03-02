@@ -61,6 +61,10 @@ export const shortWeekdayFormat = {
   weekday: 'short',
 } as const
 
+export const longWeekdayFormat = {
+  weekday: 'long',
+} as const
+
 export const shortDateTimeFormat = {
   month: 'long',
   day: 'numeric',
