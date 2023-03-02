@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useKeyDown from './useKeyDown'
+import { useElementKeyDown } from './useKeyDown'
 
 const useRovingSelection = (target: HTMLElement | null, totalItems: number) => {
   const [selectedIndex, setSelectedIndex] = useState<number | undefined>(undefined)
@@ -18,7 +18,7 @@ const useRovingSelection = (target: HTMLElement | null, totalItems: number) => {
     }
   }
 
-  useKeyDown(target, onKeyDown)
+  useElementKeyDown(target, onKeyDown)
 
   return { selectedIndex, setSelectedIndex }
 }

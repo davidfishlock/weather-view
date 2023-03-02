@@ -11,7 +11,7 @@ export const strings = {
   CURRENT_WEATHER_UV: 'UV:',
   CURRENT_WEATHER_WIND: 'Wind:',
   CURRENT_WEATHER_PRESSURE: 'Pressure:',
-  CURRENT_WEATHER_ALERTS: 'Weather alerts',
+  CURRENT_WEATHER_ALERTS: 'View active weather alerts',
   RAIN_FORECAST: 'Rain Forecast',
   NEXT_7_DAYS: 'Next 7 days',
   NEXT_7_DAYS_TODAY: 'Today',

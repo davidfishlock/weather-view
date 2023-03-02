@@ -37,12 +37,14 @@ const CurrentWeather: React.FC<Props> = ({
 
   return (
     <section aria-labelledby="currentHeader" className={classNames(['card', className])}>
-      <h2 id="currentHeader" className="sr-only">
-        {strings.CURRENT_WEATHER}
-      </h2>
       <div className="flex flex-row flex-wrap gap-2 justify-between items-center">
         <div>
-          <p className="text-xl strong-text">{getFullLocationName(location)}</p>
+          <h2
+            className="text-xl strong-text"
+            aria-label={`${strings.CURRENT_WEATHER}: ${getFullLocationName(location)}`}
+          >
+            {getFullLocationName(location)}
+          </h2>
           <p className="text-sm secondary-text">{formatDate(weather.dt + timezoneOffset)}</p>
         </div>
         {areAlertsAvailable && (
@@ -52,7 +54,7 @@ const CurrentWeather: React.FC<Props> = ({
             type="button"
             onClick={onShowAlerts}
           >
-            <FiAlertTriangle className="h-6 w-6" />
+            <FiAlertTriangle className="h-6 w-6" role="presentation" />
           </button>
         )}
       </div>

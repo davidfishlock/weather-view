@@ -10,7 +10,7 @@ import { Location } from '../../../types/location'
 import { api } from '../../../utils/weatherApi'
 import CityItem from './CityItem'
 import useRovingSelection from '../../../hooks/useRovingSelection'
-import useKeyDown from '../../../hooks/useKeyDown'
+import { useElementKeyDown } from '../../../hooks/useKeyDown'
 
 const fetchSuggestions = debounce(
   (
@@ -90,7 +90,7 @@ const LocationSelector: React.FC = () => {
     fetchSuggestions(query, onSuggestionsUpdated, onSuggestionsErrorUpdated)
   }, [query])
 
-  useKeyDown(inputRef.current, onKeyDown)
+  useElementKeyDown(inputRef.current, onKeyDown)
 
   return (
     <div className="flex flex-row">
