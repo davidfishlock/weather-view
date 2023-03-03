@@ -35,8 +35,10 @@ const WeatherNews: React.FC<Props> = ({ location, className }) => {
   if (isLoading || error || !newsArticles?.length) return null
 
   return (
-    <section className={classNames(['card', className])}>
-      <h2 className="text-xl strong-text mb-2">{strings.WEATHER_NEWS}</h2>
+    <section aria-labelledby="newsHeader" className={classNames(['card', className])}>
+      <h2 id="newsHeader" className="text-xl strong-text mb-2">
+        {strings.WEATHER_NEWS}
+      </h2>
       <ul>
         {newsArticles.map((article) => (
           <NewsItem key={article.name} article={article} />

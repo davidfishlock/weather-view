@@ -10,7 +10,7 @@ const Header: React.FC = () => (
     <div className="bg-gray-900 bg-opacity-60 flex justify-center">
       <div className="px-4 py-1 max-w-4xl w-full flex flex-row justify-between items-center">
         <div className="text-white flex flex-row items-center gap-1">
-          <WiUmbrella className="h-12 w-12 -ml-2" />
+          <WiUmbrella className="h-12 w-12 -ml-2" role="presentation" />
           <h1 className="text-2xl sr-only md:not-sr-only">Weather View</h1>
         </div>
 

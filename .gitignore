@@ -27,3 +27,6 @@ yarn-error.log*
 # cypress
 /cypress/videos
 /cypress/screenshots
+
+# storybook
+/public/index.css

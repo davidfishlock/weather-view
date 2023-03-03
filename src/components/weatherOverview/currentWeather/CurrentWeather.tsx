@@ -36,10 +36,15 @@ const CurrentWeather: React.FC<Props> = ({
   const icon = getWeatherIcon(weatherSummary.icon)
 
   return (
-    <section className={classNames(['card', className])}>
+    <section aria-labelledby="currentHeader" className={classNames(['card', className])}>
       <div className="flex flex-row flex-wrap gap-2 justify-between items-center">
         <div>
-          <h2 className="text-xl strong-text">{getFullLocationName(location)}</h2>
+          <h2
+            className="text-xl strong-text"
+            aria-label={`${strings.CURRENT_WEATHER}: ${getFullLocationName(location)}`}
+          >
+            {getFullLocationName(location)}
+          </h2>
           <p className="text-sm secondary-text">{formatDate(weather.dt + timezoneOffset)}</p>
         </div>
         {areAlertsAvailable && (
@@ -49,7 +54,7 @@ const CurrentWeather: React.FC<Props> = ({
             type="button"
             onClick={onShowAlerts}
           >
-            <FiAlertTriangle className="h-6 w-6" />
+            <FiAlertTriangle className="h-6 w-6" role="presentation" />
           </button>
         )}
       </div>
@@ -58,7 +63,7 @@ const CurrentWeather: React.FC<Props> = ({
           <div className="-ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
         </IconContext.Provider>
         <div>
-          <h3 className="text-lg capitalize">{weatherSummary.description}</h3>
+          <p className="text-lg capitalize">{weatherSummary.description}</p>
           <p className="text-lg">{formatTemperature(weather.temp)}</p>
           {!!(Math.abs(weather.temp - weather.feelsLike) > 1) && (
             <p className="text-sm">

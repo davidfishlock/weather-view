@@ -24,7 +24,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
     closePortal: closeAlerts,
     Portal,
     isOpen: isAlertModalOpen,
-  } = usePortal()
+  } = usePortal({ closeOnEsc: false, closeOnOutsideClick: false })
 
   useEffect(() => {
     setIsLoading(true)
@@ -46,39 +46,41 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
     return <p className="error inline-message">{strings.DATA_LOAD_ERROR}</p>
 
   return (
-    <div className="grid grid-cols-7 md:gap-4">
-      {!!weatherData.current && (
-        <CurrentWeather
-          className="col-span-7 md:col-span-3 border-0 md:border"
-          location={location}
-          weather={weatherData.current}
-          timezoneOffset={weatherData.timezoneOffset}
-          areAlertsAvailable={!!weatherData.alerts?.length}
-          onShowAlerts={openAlerts}
-        />
-      )}
-      {!!weatherData.minutely && (
-        <Raincast
-          className="col-span-7 md:col-span-4 h-60 md:h-auto"
-          location={location}
-          forecast={weatherData.minutely}
-          timezoneOffset={weatherData.timezoneOffset}
-        />
-      )}
-      {!!weatherData.hourly && (
-        <Hourly
-          className="col-span-7"
-          forecast={weatherData.hourly}
-          timezoneOffset={weatherData.timezoneOffset}
-        />
-      )}
-      {!!weatherData.daily && (
-        <Next7Days
-          className="col-span-7"
-          forecast={weatherData.daily}
-          timezoneOffset={weatherData.timezoneOffset}
-        />
-      )}
+    <>
+      <div aria-hidden={isAlertModalOpen} className="grid grid-cols-7 md:gap-4">
+        {!!weatherData.current && (
+          <CurrentWeather
+            className="col-span-7 md:col-span-3 border-0 md:border"
+            location={location}
+            weather={weatherData.current}
+            timezoneOffset={weatherData.timezoneOffset}
+            areAlertsAvailable={!!weatherData.alerts?.length}
+            onShowAlerts={openAlerts}
+          />
+        )}
+        {!!weatherData.minutely && (
+          <Raincast
+            className="col-span-7 md:col-span-4 h-60 md:h-auto"
+            location={location}
+            forecast={weatherData.minutely}
+            timezoneOffset={weatherData.timezoneOffset}
+          />
+        )}
+        {!!weatherData.hourly && (
+          <Hourly
+            className="col-span-7"
+            forecast={weatherData.hourly}
+            timezoneOffset={weatherData.timezoneOffset}
+          />
+        )}
+        {!!weatherData.daily && (
+          <Next7Days
+            className="col-span-7"
+            forecast={weatherData.daily}
+            timezoneOffset={weatherData.timezoneOffset}
+          />
+        )}
+      </div>
 
       {isAlertModalOpen && (
         <Portal>
@@ -89,7 +91,7 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
           </Modal>
         </Portal>
       )}
-    </div>
+    </>
   )
 }
 

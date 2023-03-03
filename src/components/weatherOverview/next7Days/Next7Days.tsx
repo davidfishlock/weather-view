@@ -3,6 +3,7 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 import { DailyWeatherForecast } from 'ts-open-weather-map'
 import Next7DaysItem from './Next7DaysItem'
+import { strings } from '../../../constants/strings'
 
 type Props = {
   forecast: DailyWeatherForecast[]
@@ -11,9 +12,12 @@ type Props = {
 }
 
 const Next7Days: React.FC<Props> = ({ forecast, timezoneOffset, className }) => (
-  <section className={classNames(['card', className])}>
+  <section aria-labelledby="next7DaysHeader" className={classNames(['card', className])}>
+    <h2 id="next7DaysHeader" className="sr-only">
+      {strings.NEXT_7_DAYS}
+    </h2>
     <IconContext.Provider value={{ className: 'icon-gray icon-md' }}>
-      <div className="grid grid-cols-4 lg:grid-cols-8 gap-y-4 gap-x-2">
+      <ul className="grid grid-cols-4 lg:grid-cols-8 gap-y-4 gap-x-2">
         {forecast.map((day, index) => (
           <Next7DaysItem
             key={`DayItem:${day.dt}`}
@@ -22,7 +26,7 @@ const Next7Days: React.FC<Props> = ({ forecast, timezoneOffset, className }) => 
             isToday={index === 0}
           />
         ))}
-      </div>
+      </ul>
     </IconContext.Provider>
   </section>
 )
