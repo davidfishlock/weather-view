@@ -44,10 +44,15 @@ export const useFocusTrap = <T extends HTMLElement>() => {
 
 type Props = {
   children: ReactElement
+  className?: string
 }
 
 export const FocusTrap: React.FC<Props> = (props) => {
   const rootElementRef = useFocusTrap<HTMLDivElement>()
 
-  return <div ref={rootElementRef}>{props.children}</div>
+  return (
+    <div ref={rootElementRef} className={props.className}>
+      {props.children}
+    </div>
+  )
 }

@@ -55,9 +55,9 @@ const Modal: React.FC<Props> = ({ title, onClose, children }) => {
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"
-          className="flex flex-col flex-shrink default-background m-4 px-8 py-6 rounded-2xl"
+          className="default-background m-4 px-8 py-6 rounded-2xl"
         >
-          <FocusTrap>
+          <FocusTrap className="flex flex-col max-h-full">
             <>
               <div className="flex flex-row justify-between items-center mb-4">
                 <h2 ref={headerRef} tabIndex={-1} className="strong-text text-2xl" id="modal-title">

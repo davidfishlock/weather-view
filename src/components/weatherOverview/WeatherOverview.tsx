@@ -11,6 +11,7 @@ import CurrentWeather from './currentWeather/CurrentWeather'
 import Hourly from './hourly/Hourly'
 import Next7Days from './next7Days/Next7Days'
 import Raincast from './rainCast/Raincast'
+import classNames from 'classnames'
 
 type Props = { location: City | { name: string; lat: number; lon: number } }
 
@@ -50,7 +51,9 @@ const WeatherOverview: React.FC<Props> = ({ location }) => {
       <div aria-hidden={isAlertModalOpen} className="grid grid-cols-7 md:gap-4">
         {!!weatherData.current && (
           <CurrentWeather
-            className="col-span-7 md:col-span-3 border-0 md:border"
+            className={classNames('col-span-7 border-0 md:border', {
+              'md:col-span-3': !!weatherData.minutely,
+            })}
             location={location}
             weather={weatherData.current}
             timezoneOffset={weatherData.timezoneOffset}
