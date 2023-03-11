@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
-import { FiX } from 'react-icons/fi'
+import { ReactComponent as FiX } from '../../../icons/x.svg'
 import { strings } from '../../../constants/strings'
 import useLockBodyScroll from '../../../hooks/useLockBodyScroll'
 import useKeyDown from '../../../hooks/useKeyDown'

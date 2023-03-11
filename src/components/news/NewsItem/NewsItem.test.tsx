@@ -4,7 +4,7 @@ import { DEFAULT_NEWS_ARTICLE } from '../../../testUtils/sampleData'
 import NewsItem from './NewsItem'
 
 function renderTarget(article = DEFAULT_NEWS_ARTICLE) {
-  render(<NewsItem article={article} />)
+  render(<NewsItem article={article} index={0} />)
 }
 
 describe('NewsItem', () => {

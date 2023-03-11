@@ -40,8 +40,8 @@ const WeatherNews: React.FC<Props> = ({ location, className }) => {
         {strings.WEATHER_NEWS}
       </h2>
       <ul>
-        {newsArticles.map((article) => (
-          <NewsItem key={article.name} article={article} />
+        {newsArticles.map((article, index) => (
+          <NewsItem key={`article-${index}`} article={article} index={index} />
         ))}
       </ul>
     </section>

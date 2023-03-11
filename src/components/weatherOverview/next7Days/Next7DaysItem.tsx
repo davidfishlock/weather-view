@@ -17,7 +17,7 @@ type Props = {
 }
 
 const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) => {
-  const icon = getWeatherIcon(forecast.weather[0].icon)
+  const WeatherIcon = getWeatherIcon(forecast.weather[0].icon)
   return (
     <li
       data-testid={testIds.NEXT_7_DAYS_ITEM}
@@ -36,7 +36,7 @@ const Next7DaysItem: React.FC<Props> = ({ forecast, isToday, timezoneOffset }) =
           ? strings.NEXT_7_DAYS_TODAY
           : formatDate(forecast.dt + timezoneOffset, shortWeekdayFormat)}
       </h3>
-      <div className="m-2">{icon ? React.createElement(icon) : null}</div>
+      <div className="m-2 icon-gray h-12 w-12">{!!WeatherIcon && <WeatherIcon />}</div>
       <p className="text-sm">
         {formatTemperature(forecast.temp.max)} / {formatTemperature(forecast.temp.min)}
       </p>

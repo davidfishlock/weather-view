@@ -1,5 +1,5 @@
 import React from 'react'
-import { WiUmbrella } from 'react-icons/wi'
+import { ReactComponent as WiUmbrella } from '../../icons/wi-umbrella.svg'
 import LocationSelector from './locationSelector/LocationSelector'
 
 const Header: React.FC = () => (

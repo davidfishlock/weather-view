@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import React from 'react'
-import { IconContext } from 'react-icons'
 import { HourlyWeatherForecast } from 'ts-open-weather-map'
 import { getWeatherIcon } from '../../../utils/iconUtils'
 
@@ -16,12 +15,14 @@ const Hourly: React.FC<Props> = ({ forecast, graphMargins, className }) => {
       className={classNames(['flex flex-row justify-around', className])}
       style={{ marginLeft: graphMargins.left, marginRight: graphMargins.right }}
     >
-      <IconContext.Provider value={{ className: 'h-6 w-6 sm:h-8 sm:w-8 -mx-1' }}>
-        {forecast.map((hour) => {
-          const icon = getWeatherIcon(hour.weather[0].icon)
-          return <div key={`icon-${hour.dt}`}>{icon ? React.createElement(icon) : null}</div>
-        })}
-      </IconContext.Provider>
+      {forecast.map((hour) => {
+        const WeatherIcon = getWeatherIcon(hour.weather[0].icon)
+        return (
+          <div className="h-6 w-6 sm:h-8 sm:w-8 -mx-1" key={`icon-${hour.dt}`}>
+            {!!WeatherIcon && <WeatherIcon />}
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -4,20 +4,21 @@ import { strings } from '../../../constants/strings'
 import { getImageUrlForArticle } from '../../../utils/newsApi'
 
 type Props = {
+  index: number
   article: NewsArticle
 }
 
-const NewsItem: React.FC<Props> = ({ article }) => {
+const NewsItem: React.FC<Props> = ({ article, index }) => {
   const image = getImageUrlForArticle(article)
 
   return (
     <li className="-mx-4 border-b default-border last:border-0 relative">
       <article
-        aria-labelledby={`${article.id}-header`}
+        aria-labelledby={`article-${index}-header`}
         className="flex items-start py-4 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
       >
         <div>
-          <h3 id={`${article.id}-header`} className="text-lg strong-text">
+          <h3 id={`article-${index}-header`} className="text-lg strong-text">
             <a
               className="after:absolute after:left-0 after:right-0 after:top-0 after:bottom-0"
               href={article.url}

@@ -19,6 +19,7 @@ const RainMap: React.FC<Props> = ({ location, className }) => (
     attributionControl={false}
     scrollWheelZoom={false}
     zoomControl={false}
+    keyboard={false}
     touchZoom={false}
     doubleClickZoom={false}
     dragging={false}

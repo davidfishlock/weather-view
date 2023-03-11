@@ -1,8 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
-import { IconContext } from 'react-icons'
-import { FiAlertTriangle } from 'react-icons/fi'
-import { WiWindDeg } from 'react-icons/wi'
+import { ReactComponent as FiAlertTriangle } from '../../../icons/alert-triangle.svg'
+import { ReactComponent as WiWindDeg } from '../../../icons/wi-wind-deg.svg'
 import { City, CurrentWeatherReport } from 'ts-open-weather-map'
 import { strings } from '../../../constants/strings'
 import { getFullLocationName } from '../../../types/location'
@@ -33,7 +32,7 @@ const CurrentWeather: React.FC<Props> = ({
   className,
 }) => {
   const weatherSummary = weather.weather[0]
-  const icon = getWeatherIcon(weatherSummary.icon)
+  const WeatherIcon = getWeatherIcon(weatherSummary.icon)
 
   return (
     <section aria-labelledby="currentHeader" className={classNames(['card', className])}>
@@ -59,9 +58,7 @@ const CurrentWeather: React.FC<Props> = ({
         )}
       </div>
       <div className="flex flex-row items-center">
-        <IconContext.Provider value={{ className: 'icon-gray icon-lg' }}>
-          <div className="-ml-2 mr-2">{icon ? React.createElement(icon) : null}</div>
-        </IconContext.Provider>
+        <div className="-ml-2 mr-2 icon-gray icon-lg">{WeatherIcon && <WeatherIcon />}</div>
         <div>
           <p className="text-lg capitalize">{weatherSummary.description}</p>
           <p className="text-lg">{formatTemperature(weather.temp)}</p>
