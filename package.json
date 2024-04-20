@@ -30,7 +30,7 @@
     "react-leaflet": "^4.2.1",
     "react-useportal": "^1.0.17",
     "react-vis": "^1.11.7",
-    "ts-open-weather-map": "^0.0.9"
+    "ts-open-weather-map": "^3.0.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.15",
