@@ -11,6 +11,7 @@ import {
   shortDateTimeFormat,
   timeFormat,
 } from './numberFormatter'
+import { vi } from 'vitest'
 
 describe('numberFormatter', () => {
   describe('getUnitsForLocale', () => {
@@ -36,7 +37,7 @@ describe('numberFormatter', () => {
     test.each(temperatureTheories)(
       'locale %p and value %p returns %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatTemperature(value)
         expect(formattedValue).toEqual(expected)
@@ -55,7 +56,7 @@ describe('numberFormatter', () => {
     test.each(temperatureTheories)(
       'locale %p and value %p returns %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatPrecipitation(value)
         expect(formattedValue).toEqual(expected)
@@ -72,7 +73,7 @@ describe('numberFormatter', () => {
     test.each(percentageTheories)(
       'locale %p and value %p returns %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatPercentage(value)
         expect(formattedValue).toEqual(expected)
@@ -87,7 +88,7 @@ describe('numberFormatter', () => {
     ] as const
 
     test.each(speedTheories)('locale %p and value %p returns %p', (locale, value, expected) => {
-      jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
       const formattedValue = formatWindSpeed(value)
       expect(formattedValue).toEqual(expected)
@@ -101,7 +102,7 @@ describe('numberFormatter', () => {
     ] as const
 
     test.each(speedTheories)('locale %p and value %p returns %p', (locale, value, expected) => {
-      jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+      vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
       const formattedValue = formatPressure(value)
       expect(formattedValue).toEqual(expected)
@@ -119,7 +120,7 @@ describe('numberFormatter', () => {
     test.each(shortDateTheories)(
       'locale %p and value %p returns short date format %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatDate(value, shortDateFormat)
         expect(formattedValue).toEqual(expected)
@@ -128,7 +129,7 @@ describe('numberFormatter', () => {
 
     const shortDateTimeTheories = [
       ['en-GB', 1637584109, '22 November at 12:28'],
-      ['en-US', 1637584109, 'November 22 at 12:28 PM'],
+      ['en-US', 1637584109, 'November 22 at 12:28 PM'],
       ['fr-FR', 1637584109, '22 novembre à 12:28'],
       ['de-DE', 1637584109, '22. November um 12:28'],
     ] as const
@@ -136,7 +137,7 @@ describe('numberFormatter', () => {
     test.each(shortDateTimeTheories)(
       'locale %p and value %p returns short datetime format %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatDate(value, shortDateTimeFormat)
         expect(formattedValue).toEqual(expected)
@@ -145,7 +146,7 @@ describe('numberFormatter', () => {
 
     const fullDateTimeTheories = [
       ['en-GB', 1637584109, '22 November 2021 at 12:28'],
-      ['en-US', 1637584109, 'November 22, 2021 at 12:28 PM'],
+      ['en-US', 1637584109, 'November 22, 2021 at 12:28 PM'],
       ['fr-FR', 1637584109, '22 novembre 2021 à 12:28'],
       ['de-DE', 1637584109, '22. November 2021 um 12:28'],
     ] as const
@@ -153,7 +154,7 @@ describe('numberFormatter', () => {
     test.each(fullDateTimeTheories)(
       'locale %p and value %p returns full datetime format %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatDate(value, fullDateTimeFormat)
         expect(formattedValue).toEqual(expected)
@@ -162,7 +163,7 @@ describe('numberFormatter', () => {
 
     const timeTheories = [
       ['en-GB', 1637584109, '12:28'],
-      ['en-US', 1637584109, '12:28 PM'],
+      ['en-US', 1637584109, '12:28 PM'],
       ['fr-FR', 1637584109, '12:28'],
       ['de-DE', 1637584109, '12:28'],
     ] as const
@@ -170,7 +171,7 @@ describe('numberFormatter', () => {
     test.each(timeTheories)(
       'locale %p and value %p returns time format %p',
       (locale, value, expected) => {
-        jest.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
+        vi.spyOn(navigator, 'language', 'get').mockReturnValue(locale)
 
         const formattedValue = formatDate(value, timeFormat)
         expect(formattedValue).toEqual(expected)

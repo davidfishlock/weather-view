@@ -1,13 +1,13 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
 import { strings } from '../../../constants/strings'
 import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
 import CurrentWeather from './CurrentWeather'
+import { vi } from 'vitest'
 
 const location = { name: 'Some Location', lat: 0, lon: 0 }
 
-const showAlertsMock = jest.fn()
+const showAlertsMock = vi.fn()
 
 function renderTarget() {
   render(
@@ -29,7 +29,7 @@ describe('CurrentWeather', () => {
 
   test('displays date', () => {
     renderTarget()
-    expect(screen.getByText('18 November 2021 at 06:16')).toBeInTheDocument()
+    expect(screen.getByText('November 18, 2021 at 6:16 AM')).toBeInTheDocument()
   })
 
   test('displays weather description', () => {
@@ -39,7 +39,7 @@ describe('CurrentWeather', () => {
 
   test('displays temperature', () => {
     renderTarget()
-    expect(screen.getByText('0°C')).toBeInTheDocument()
+    expect(screen.getByText('0°F')).toBeInTheDocument()
   })
 
   test('displays humidity', () => {
@@ -63,7 +63,7 @@ describe('CurrentWeather', () => {
 
     const windElement = screen.getByText(strings.CURRENT_WEATHER_WIND).parentElement
     if (!windElement) throw new Error('windElement not found')
-    expect(within(windElement).getByText('4.1 m/s')).toBeInTheDocument()
+    expect(within(windElement).getByText('4 mph')).toBeInTheDocument()
   })
 
   test('displays atmospheric pressure', () => {
