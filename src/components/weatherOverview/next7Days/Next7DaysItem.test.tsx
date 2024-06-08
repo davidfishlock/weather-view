@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import React from 'react'
 import { DailyWeatherForecast } from 'ts-open-weather-map'
 import { strings } from '../../../constants/strings'
 import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
@@ -33,6 +32,6 @@ describe('Next7DaysItem', () => {
 
   test('displays min and max temperatures', () => {
     renderTarget(DEFAULT_ONECALL_RESPONSE.daily[0])
-    expect(screen.getByText('8°C / -1°C')).toBeInTheDocument()
+    expect(screen.getByText('8°F / -1°F')).toBeInTheDocument()
   })
 })

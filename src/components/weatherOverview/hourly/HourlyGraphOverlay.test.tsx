@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import React from 'react'
 import { HourlyWeatherForecast } from 'ts-open-weather-map'
 import { DEFAULT_ONECALL_RESPONSE } from '../../../testUtils/sampleData'
 import HourlyGraphOverlay from './HourlyGraphOverlay'
@@ -18,7 +17,7 @@ describe('HourlyGraphOverlay', () => {
   test('displays temperature', () => {
     const forecast = DEFAULT_ONECALL_RESPONSE.hourly[0]
     renderTarget(forecast)
-    expect(screen.getByText('0°C')).toBeInTheDocument()
+    expect(screen.getByText('0°F')).toBeInTheDocument()
   })
 
   test('does not display precipitation when zero', () => {

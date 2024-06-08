@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as FiAlertTriangle } from '../../icons/alert-triangle.svg'
+import FiAlertTriangle from '../../icons/alert-triangle.svg?react'
 import { WeatherAlert } from 'ts-open-weather-map'
 import { strings } from '../../constants/strings'
 import { testIds } from '../../constants/testIds'

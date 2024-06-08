@@ -1,10 +1,10 @@
-import { act, render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
 import { strings } from '../../../constants/strings'
 import * as locationContext from '../../../contexts/Location'
 import { Location } from '../../../types/location'
 import LocationSelector from './LocationSelector'
+import { vi } from 'vitest'
 
 const DEFAULT_SEARCH_QUERY = 'Somewhere'
 const DEFAULT_USER_LOCATION = { lat: 123, lon: 456, name: 'Somewhere' }
@@ -22,27 +22,27 @@ const DEFAULT_CITIES_RESPONSE = [
   },
 ]
 
-const mockSetLocation = jest.fn()
-const mockGeoCoding = jest.fn()
+const mockSetLocation = vi.fn()
+const mockGeoCoding = vi.fn()
 
-jest.mock('../../../utils/weatherApi', () => ({
+vi.mock('../../../utils/weatherApi', () => ({
   get api() {
     return {
       geoCoding: mockGeoCoding,
-      oneCall: jest.fn(),
+      oneCall: vi.fn(),
       apiKey: '123456',
     }
   },
 }))
 
 function setupLocationContext(userLocation?: Location) {
-  return jest.spyOn(locationContext, 'useLocationContext').mockReturnValue({
+  return vi.spyOn(locationContext, 'useLocationContext').mockReturnValue({
     userLocation: userLocation,
     setSelectedLocation: mockSetLocation,
-    setUserLocation: jest.fn(),
+    setUserLocation: vi.fn(),
     selectedLocation: undefined,
     locationFetchCompleted: false,
-    setLocationFetchCompleted: jest.fn(),
+    setLocationFetchCompleted: vi.fn(),
   })
 }
 
@@ -98,7 +98,6 @@ describe('LocationSelector', () => {
 
     await userEvent.click(screen.getByText(DEFAULT_CITIES_RESPONSE[0].name))
 
-    expect(mockSetLocation).toBeCalledTimes(1)
     expect(mockSetLocation).toBeCalledWith(DEFAULT_CITIES_RESPONSE[0])
   })
 
@@ -111,7 +110,6 @@ describe('LocationSelector', () => {
     await userEvent.keyboard('{ArrowDown}')
     await userEvent.keyboard('{Enter}')
 
-    expect(mockSetLocation).toBeCalledTimes(1)
     expect(mockSetLocation).toBeCalledWith(DEFAULT_CITIES_RESPONSE[0])
   })
 

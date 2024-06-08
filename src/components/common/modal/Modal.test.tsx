@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
 import { strings } from '../../../constants/strings'
 import Modal from './Modal'
+import { vi } from 'vitest'
 
-const onCloseMock = jest.fn()
+const onCloseMock = vi.fn()
 const title = 'Some title'
 const content = 'Some content'
 

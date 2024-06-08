@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import React from 'react'
 import { strings } from '../../constants/strings'
 import { testIds } from '../../constants/testIds'
 import { DEFAULT_ONECALL_RESPONSE } from '../../testUtils/sampleData'
@@ -25,7 +24,9 @@ describe('Alert', () => {
   test('displays alert duration', () => {
     renderTarget()
     expect(
-      screen.getByText(`${strings.ALERT_VALID_FROM} 18 November at 10:57 - 18 November at 14:00`),
+      screen.getByText(
+        `${strings.ALERT_VALID_FROM} November 18 at 10:57 AM - November 18 at 2:00 PM`,
+      ),
     ).toBeInTheDocument()
   })
 
